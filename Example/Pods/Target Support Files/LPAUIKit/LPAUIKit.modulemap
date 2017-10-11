@@ -1,0 +1,6 @@
+framework module LPAUIKit {
+  umbrella header "LPAUIKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
