@@ -1,5 +1,5 @@
 //
-//  LPAViewController.m
+//  LPADemoViewController.m
 //  LPAUIKit
 //
 //  Created by leeping610 on 10/11/2017.
@@ -12,7 +12,7 @@
 
 @end
 
-@implementation LPAViewController
+@implementation LPADemoViewController
 
 - (void)viewDidLoad
 {
