@@ -6,13 +6,15 @@
 //  Copyright (c) 2017 leeping610. All rights reserved.
 //
 
-#import "LPAViewController.h"
+#import "LPADemoViewController.h"
 
-@interface LPAViewController ()
+@interface LPADemoViewController ()
 
 @end
 
 @implementation LPADemoViewController
+
+#pragma mark - Life Cycle
 
 - (void)viewDidLoad
 {

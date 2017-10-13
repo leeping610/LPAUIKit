@@ -1,0 +1,6 @@
+framework module LPAServerAPIManager {
+  umbrella header "LPAServerAPIManager-umbrella.h"
+
+  export *
+  module * { export * }
+}

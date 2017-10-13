@@ -9,4 +9,12 @@
 
 @interface UIViewController (LPAAlert)
 
+- (void)lpa_alertWithTitle:(NSString *)title
+                   message:(NSString *)message
+                    action:(NSArray<UIAlertAction *> *)alertActions;
+
+- (void)lpa_actionSheetWithTitle:(NSString *)title
+                         message:(NSString *)message
+                         actions:(NSArray<UIAlertAction *> *)alertActions;
+
 @end

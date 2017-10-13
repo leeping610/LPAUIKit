@@ -18,5 +18,19 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "LPAUIKit/Classes/**/*"
+  "source_files": "LPAUIKit/Classes/**/*",
+  "dependencies": {
+    "LPAServerAPIManager": [
+
+    ],
+    "Aspects": [
+
+    ],
+    "Masonry": [
+
+    ],
+    "MBProgressHUD": [
+
+    ]
+  }
 }

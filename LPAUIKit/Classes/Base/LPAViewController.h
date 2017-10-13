@@ -6,7 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIView+LPAToastHUD.h"
 
-@interface LPAViewController : UIViewController
+#import <LPAServerAPIManager/LPAServerAPIManager.h>
+
+@interface LPAViewController : UIViewController <LPAServerAPIManagerDelegate,
+                                                 LPAServerAPIManagerParamSource>
+
 
 @end

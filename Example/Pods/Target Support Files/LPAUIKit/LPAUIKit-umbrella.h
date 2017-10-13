@@ -10,6 +10,13 @@
 #endif
 #endif
 
+#import "LPACollectionViewController.h"
+#import "LPATableViewController.h"
+#import "LPAViewController.h"
+#import "UIView+LPAToastHUD.h"
+#import "UIViewController+LPAAlert.h"
+#import "LPAUIKit.h"
+#import "LPAControllerPromptView.h"
 
 FOUNDATION_EXPORT double LPAUIKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char LPAUIKitVersionString[];

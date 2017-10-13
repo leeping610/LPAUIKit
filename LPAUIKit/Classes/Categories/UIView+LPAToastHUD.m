@@ -5,14 +5,16 @@
 //  Created by 平果太郎 on 2017/10/12.
 //
 
-#import "UIViewController+LPAToast.h"
+#import "UIView+LPAToastHUD.h"
 
 #import <objc/runtime.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-static const void *LPAViewControllerAutoHideTimeIntervalKey = &LPAViewControllerAutoHideTimeIntervalKey;
-static const void *LPAViewControllerToastHUDBackgroundStyleKey = &LPAViewControllerToastHUDBackgroundStyleKey;
-static const void *LPAViewControllerToastHUDAnimationKey = &LPAViewControllerToastHUDAnimationKey;
+static const void *LPAToastHUDAutoHideTimeIntervalKey = &LPAToastHUDAutoHideTimeIntervalKey;
+static const void *LPAToastHUDBackgroundStyleKey = &LPAToastHUDBackgroundStyleKey;
+static const void *LPAToastHUDAnimationKey = &LPAToastHUDAnimationKey;
+
+static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
 
 @implementation UIView (LPAToastHUD)
 
@@ -20,7 +22,7 @@ static const void *LPAViewControllerToastHUDAnimationKey = &LPAViewControllerToa
 
 - (void)lpa_startLoading
 {
-    MBProgressHUD *progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeIndeterminate;
     [progressHUD showAnimated:YES];
 }
@@ -52,31 +54,31 @@ static const void *LPAViewControllerToastHUDAnimationKey = &LPAViewControllerToa
 
 - (void)lpa_endLoading
 {
-    MBProgressHUD *progressHUD = [MBProgressHUD HUDForView:self.view];
+    MBProgressHUD *progressHUD = [MBProgressHUD HUDForView:self];
     [progressHUD hideAnimated:YES];
 }
 
 - (void)lpa_endLoadingWithSuccess:(NSString *)successText
 {
-    MBProgressHUD *progressHUD = [MBProgressHUD HUDForView:self.view];
-    [progressHUD hideAnimated:YES];
+    [self lpa_showText:successText];
 }
 
 - (void)lpa_endLoadingWithFailure:(NSString *)failureText
 {
-    
+    [self lpa_showText:failureText];
 }
 
 - (void)lpa_startLoadingWithProgress:(void (^)(LPAToastHUDProgressBlock))progressBlock
 {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
-    progressHUD.mode = MBProgressHUDModeAnnularDeterminate;
+    progressHUD.mode = MBProgressHUDModeDeterminate;
     LPAToastHUDProgressBlock block = ^(CGFloat progress){
         progressHUD.progress = progress;
     };
     if (progressBlock) {
         progressBlock(block);
     }
+    [progressHUD showAnimated:YES];
 }
 
 - (void)lpa_startDisableLoadingWithProgress:(void (^)(LPAToastHUDProgressBlock))progressBlock
@@ -90,6 +92,7 @@ static const void *LPAViewControllerToastHUDAnimationKey = &LPAViewControllerToa
     if (progressBlock) {
         progressBlock(block);
     }
+    [progressHUD showAnimated:YES];
 }
 
 - (void)lpa_startLoadingWithText:(NSString *)loadingText
@@ -104,84 +107,128 @@ static const void *LPAViewControllerToastHUDAnimationKey = &LPAViewControllerToa
     if (progressBlock) {
         progressBlock(block);
     }
+    [progressHUD showAnimated:YES];
 }
 
 - (void)lpa_startDisableLoadingWithText:(NSString *)loadingText
                           progressBlock:(void (^)(LPAToastHUDProgressBlock))progressBlock
 {
-    
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeDeterminate;
+    progressHUD.label.text = loadingText;
+    progressHUD.userInteractionEnabled = YES;
+    LPAToastHUDProgressBlock block = ^(CGFloat progress){
+        progressHUD.progress = progress;
+    };
+    if (progressBlock) {
+        progressBlock(block);
+    }
+    [progressHUD showAnimated:YES];
 }
 
 - (void)lpa_showText:(NSString *)text
 {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeText;
+    progressHUD.detailsLabel.text = text;
+    progressHUD.detailsLabel.font = [UIFont boldSystemFontOfSize:LPAToastHUDDetailLabelFontSize];
+    [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:[self autoHideTimeInterval]];
 }
 
 - (void)lpa_showText:(NSString *)text delayBlock:(void (^)(void))delayBlock
 {
-    
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeText;
+    progressHUD.detailsLabel.text = text;
+    progressHUD.detailsLabel.font = [UIFont boldSystemFontOfSize:LPAToastHUDDetailLabelFontSize];
+    progressHUD.completionBlock = ^{
+        if (delayBlock) {
+            delayBlock();
+        }
+    };
+    [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:[self autoHideTimeInterval]];
 }
 
 - (void)lpa_showText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds
 {
-    
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeText;
+    progressHUD.detailsLabel.text = text;
+    progressHUD.detailsLabel.font = [UIFont boldSystemFontOfSize:LPAToastHUDDetailLabelFontSize];
+    [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:seconds];
 }
 
 - (void)lpa_showText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds delayBlock:(void (^)(void))delayBlock
 {
-    
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeText;
+    progressHUD.detailsLabel.text = text;
+    progressHUD.detailsLabel.font = [UIFont boldSystemFontOfSize:LPAToastHUDDetailLabelFontSize];
+    progressHUD.completionBlock = ^{
+        if (delayBlock) {
+            delayBlock();
+        }
+    };
+    [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:seconds];
 }
 
 #pragma mark - Config Class Methods
 
 + (void)lpa_setAutoHideTimeInterval:(NSTimeInterval)timeInterval
 {
-    objc_setAssociatedObject([self class], LPAViewControllerAutoHideTimeIntervalKey, @(timeInterval), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject([self class], LPAToastHUDAutoHideTimeIntervalKey, @(timeInterval), OBJC_ASSOCIATION_ASSIGN);
 }
 
-+ (void)lpa_setToastHUDBackgroundStyle:(LPAViewControllerToastHUDBackgroundStyle)style
++ (void)lpa_setToastHUDBackgroundStyle:(LPAToastHUDBackgroundStyle)style
 {
-    objc_setAssociatedObject([self class], LPAViewControllerToastHUDBackgroundStyleKey, @(style), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject([self class], LPAToastHUDBackgroundStyleKey, @(style), OBJC_ASSOCIATION_ASSIGN);
 }
 
-+ (void)lpa_setToastHUDAnimation:(LPAViewControllerToastHUDAnimation)animationType
++ (void)lpa_setToastHUDAnimation:(LPAToastHUDAnimation)animationType
 {
-    objc_setAssociatedObject([self class], LPAViewControllerToastHUDAnimationKey, @(animationType), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject([self class], LPAToastHUDAnimationKey, @(animationType), OBJC_ASSOCIATION_ASSIGN);
 }
 
 #pragma mark - Private Methods
 
 - (MBProgressHUD *)defaultProgressHUD
 {
-    MBProgressHUD *progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
+    MBProgressHUD *progressHUD = [[MBProgressHUD alloc] initWithView:self];
     progressHUD.minShowTime = 2;
     progressHUD.backgroundView.style = (MBProgressHUDBackgroundStyle)[self toastHUDBackgroundStyle];
     progressHUD.animationType = (MBProgressHUDAnimation)[self toastHUDAnimation];
     progressHUD.removeFromSuperViewOnHide = YES;
     progressHUD.userInteractionEnabled = NO;
-    [self.view addSubview:progressHUD];
+    [self addSubview:progressHUD];
     return progressHUD;
 }
 
 - (NSTimeInterval)autoHideTimeInterval
 {
-    NSTimeInterval timeInterval = [objc_getAssociatedObject([self class], LPAViewControllerAutoHideTimeIntervalKey) floatValue];
+    NSTimeInterval timeInterval = [objc_getAssociatedObject([self class], LPAToastHUDAutoHideTimeIntervalKey) floatValue];
     if (!timeInterval) {
         timeInterval = 3;
     }
     return timeInterval;
 }
 
-- (LPAViewControllerToastHUDBackgroundStyle)toastHUDBackgroundStyle
+- (LPAToastHUDBackgroundStyle)toastHUDBackgroundStyle
 {
-    LPAViewControllerToastHUDBackgroundStyle toastHUDBackgroundStyle = [objc_getAssociatedObject([self class], LPAViewControllerToastHUDBackgroundStyleKey) integerValue];
+    LPAToastHUDBackgroundStyle toastHUDBackgroundStyle = [objc_getAssociatedObject([self class], LPAToastHUDBackgroundStyleKey) integerValue];
     return toastHUDBackgroundStyle;
 }
 
-- (LPAViewControllerToastHUDAnimation)toastHUDAnimation
+- (LPAToastHUDAnimation)toastHUDAnimation
 {
-    LPAViewControllerToastHUDAnimation anmationType = [objc_getAssociatedObject([self class], LPAViewControllerToastHUDAnimationKey) integerValue];
+    LPAToastHUDAnimation anmationType = [objc_getAssociatedObject([self class], LPAToastHUDAnimationKey) integerValue];
     return anmationType;
 }
 

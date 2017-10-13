@@ -7,24 +7,24 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, LPAViewControllerToastHUDBackgroundStyle)
+typedef NS_ENUM(NSInteger, LPAToastHUDBackgroundStyle)
 {
     /// Solid color background
-    LPAUIViewControllerToastHUDBackgroundStyleSolidColor,
+    LPAToastHUDBackgroundStyleSolidColor,
     /// UIVisualEffectView or UIToolbar.layer background view
-    LPAUIViewControllerToastHUDBackgroundStyleBlur
+    LPAToastHUDBackgroundStyleBlur
 };
 
-typedef NS_ENUM(NSInteger, LPAViewControllerToastHUDAnimation)
+typedef NS_ENUM(NSInteger, LPAToastHUDAnimation)
 {
     /// Opacity animation
-    LPAViewControllerToastHUDAnimationFade,
+    LPAToastHUDAnimationFade,
     /// Opacity + scale animation (zoom in when appearing zoom out when disappearing)
-    LPAViewControllerToastHUDAnimationZoom,
+    LPAToastHUDAnimationZoom,
     /// Opacity + scale animation (zoom out style)
-    LPAViewControllerToastHUDAnimationZoomOut,
+    LPAToastHUDAnimationZoomOut,
     /// Opacity + scale animation (zoom in style)
-    LPAViewControllerToastHUDAnimationZoomIn
+    LPAToastHUDAnimationZoomIn
 };
 
 typedef void(^LPAToastHUDProgressBlock)(CGFloat progress);
@@ -148,13 +148,13 @@ typedef void(^LPAToastHUDProgressBlock)(CGFloat progress);
 
  @param style backgroundStyle enum
  */
-+ (void)lpa_setToastHUDBackgroundStyle:(LPAViewControllerToastHUDBackgroundStyle)style;
++ (void)lpa_setToastHUDBackgroundStyle:(LPAToastHUDBackgroundStyle)style;
 
 /**
  set the HUD animationType
 
  @param animationType animation enum
  */
-+ (void)lpa_setToastHUDAnimation:(LPAViewControllerToastHUDAnimation)animationType;
++ (void)lpa_setToastHUDAnimation:(LPAToastHUDAnimation)animationType;
 
 @end
