@@ -20,16 +20,13 @@
   },
   "source_files": "LPAUIKit/Classes/**/*",
   "dependencies": {
-    "LPAServerAPIManager": [
-
-    ],
-    "Aspects": [
-
-    ],
     "Masonry": [
 
     ],
     "MBProgressHUD": [
+
+    ],
+    "MJRefresh": [
 
     ]
   }

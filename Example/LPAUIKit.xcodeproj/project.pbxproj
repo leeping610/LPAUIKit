@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		06FCC3DEC27D0D49E0854DE8 /* Pods_LPAUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC19821EC65DE1B2D0FED1A /* Pods_LPAUIKit_Example.framework */; };
+		072A03901F987FDE00CE59C8 /* LPADemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 072A038F1F987FDE00CE59C8 /* LPADemoTableViewController.m */; };
+		072A03931F987FF900CE59C8 /* LPADemoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 072A03921F987FF900CE59C8 /* LPADemoCollectionViewController.m */; };
 		178406E743F7BFC386F6F4D4 /* Pods_LPAUIKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63AE3298B8DE66EC58102943 /* Pods_LPAUIKit_Tests.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -37,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		072A038E1F987FDE00CE59C8 /* LPADemoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPADemoTableViewController.h; sourceTree = "<group>"; };
+		072A038F1F987FDE00CE59C8 /* LPADemoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPADemoTableViewController.m; sourceTree = "<group>"; };
+		072A03911F987FF900CE59C8 /* LPADemoCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPADemoCollectionViewController.h; sourceTree = "<group>"; };
+		072A03921F987FF900CE59C8 /* LPADemoCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPADemoCollectionViewController.m; sourceTree = "<group>"; };
 		0C8B662E7BB7F29C38972B93 /* Pods-LPAUIKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPAUIKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LPAUIKit_Tests/Pods-LPAUIKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		17A91B430FED294DB966953F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2ECECB9AF0E1BAD653C992D4 /* LPAUIKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LPAUIKit.podspec; path = ../LPAUIKit.podspec; sourceTree = "<group>"; };
@@ -136,6 +142,10 @@
 				6003F59D195388D20070C39A /* LPAAppDelegate.m */,
 				6003F5A5195388D20070C39A /* LPADemoViewController.h */,
 				6003F5A6195388D20070C39A /* LPADemoViewController.m */,
+				072A038E1F987FDE00CE59C8 /* LPADemoTableViewController.h */,
+				072A038F1F987FDE00CE59C8 /* LPADemoTableViewController.m */,
+				072A03911F987FF900CE59C8 /* LPADemoCollectionViewController.h */,
+				072A03921F987FF900CE59C8 /* LPADemoCollectionViewController.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
@@ -255,6 +265,7 @@
 						ProvisioningStyle = Manual;
 					};
 					6003F5AD195388D20070C39A = {
+						LastSwiftMigration = 0820;
 						TestTargetID = 6003F589195388D20070C39A;
 					};
 				};
@@ -368,20 +379,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LPAUIKit_Example/Pods-LPAUIKit_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
-				"${BUILT_PRODUCTS_DIR}/LPAServerAPIManager/LPAServerAPIManager.framework",
 				"${BUILT_PRODUCTS_DIR}/LPAUIKit/LPAUIKit.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LPAServerAPIManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LPAUIKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +433,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072A03901F987FDE00CE59C8 /* LPADemoTableViewController.m in Sources */,
+				072A03931F987FF900CE59C8 /* LPADemoCollectionViewController.m in Sources */,
 				6003F59E195388D20070C39A /* LPAAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* LPADemoViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
@@ -561,6 +570,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LPAUIKit/LPAUIKit-Prefix.pch";
 				INFOPLIST_FILE = "LPAUIKit/LPAUIKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -580,6 +590,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LPAUIKit/LPAUIKit-Prefix.pch";
 				INFOPLIST_FILE = "LPAUIKit/LPAUIKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -607,6 +618,7 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LPAUIKit_Example.app/LPAUIKit_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -627,6 +639,7 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LPAUIKit_Example.app/LPAUIKit_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
