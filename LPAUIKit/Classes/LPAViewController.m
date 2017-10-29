@@ -15,24 +15,6 @@
 
 #pragma mark - Life Cycle
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        
-    }
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        
-    }
-    return self;
-}
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -44,10 +26,47 @@
     // Do any additional setup after loading the view.
 }
 
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    if ([self.parentViewController isKindOfClass:[UINavigationController class]]) {
+//        if (self.navigationController.navigationBar.barTintColor != self.navigationBarTintColor) {
+//            [self.navigationController.navigationBar setBarTintColor:self.navigationBarTintColor];
+//        }
+//        if (self.navigationController.navigationBar.tintColor != self.navigationTintColor) {
+//            [self.navigationController.navigationBar setTintColor:self.navigationTintColor];
+//        }
+//        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:self.navigationTitleColor,
+//                                                                          NSFontAttributeName: [UIFont systemFontOfSize:18]}];
+//        if (_statusAppearanceType == LPAUIKitStatusAppearanceNormal) {
+//            if ([UIApplication sharedApplication].statusBarStyle != self.statusBarStyle) {
+//                [[UIApplication sharedApplication] setStatusBarStyle:self.statusBarStyle animated:YES];
+//            }
+//        }
+//    }
+//}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - StatusBar Methods
+
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleDefault;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation
+{
+    return UIStatusBarAnimationFade;
 }
 
 @end
