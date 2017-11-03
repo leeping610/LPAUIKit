@@ -14,6 +14,8 @@
 #import "UIViewController+LPAAlert.h"
 #import "LPACollectionView.h"
 #import "LPACollectionViewController.h"
+#import "LPAHUD.h"
+#import "LPANavigationController.h"
 #import "LPATableView.h"
 #import "LPATableViewController.h"
 #import "LPATableViewCell.h"

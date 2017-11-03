@@ -8,5 +8,8 @@
 #ifndef LPAUIKit_h
 #define LPAUIKit_h
 
+#import "LPAViewController.h"
+#import "LPATableViewController.h"
+#import "LPANavigationController.h"
 
 #endif /* LPAUIKit_h */

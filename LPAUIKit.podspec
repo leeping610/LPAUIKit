@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LPAUIKit'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'A short description of LPAUIKit.'
 
 # This description is used to generate tags and improve search results.
@@ -25,16 +25,16 @@ TODO: Add long description of the pod here.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'leeping610' => 'liping_000@126.com' }
-  s.source           = { :git => 'https://github.com/leeping610/LPAUIKit.git', :tag => '0.1.1' }
+  s.source           = { :git => 'https://github.com/leeping610/LPAUIKit.git', :tag => '0.1.2' }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'LPAUIKit/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'LPAUIKit' => ['LPAUIKit/Assets/*.png']
-  # }
+  s.resource_bundles = {
+    'LPAUIKit' => ['LPAUIKit/Assets/*.png']
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

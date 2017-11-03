@@ -112,12 +112,27 @@ typedef void(^LPAToastHUDProgressBlock)(CGFloat progress);
 - (void)lpa_showText:(NSString *)text;
 
 /**
+ disable show a just text HUD toast
+
+ @param text The text
+ */
+- (void)lpa_disableShowText:(NSString *)text;
+
+/**
  show a just text HUD toast with delay block
 
  @param text The text
  @param delayBlock The delay block
  */
 - (void)lpa_showText:(NSString *)text delayBlock:(void (^)(void))delayBlock;
+
+/**
+ disable show a just text HUD toast with delay block
+ 
+ @param text The text
+ @param delayBlock The delay block
+ */
+- (void)lpa_disableShowText:(NSString *)text delayBlock:(void (^)(void))delayBlock;
 
 /**
  show a just text HUD toast with text & auto hide time interval
@@ -128,6 +143,14 @@ typedef void(^LPAToastHUDProgressBlock)(CGFloat progress);
 - (void)lpa_showText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds;
 
 /**
+ show a just text HUD toast with text & auto hide time interval
+ 
+ @param text The text
+ @param seconds The auto hide time interval
+ */
+- (void)lpa_disableShowText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds;
+
+/**
  show a just text HUD toast with text & auto hide time interval & delay block
 
  @param text The text
@@ -135,6 +158,79 @@ typedef void(^LPAToastHUDProgressBlock)(CGFloat progress);
  @param delayBlock The delay block
  */
 - (void)lpa_showText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds delayBlock:(void (^)(void))delayBlock;
+
+/**
+ disable show a just text HUD toast with text & auto hide time interval & delay block
+ 
+ @param text The text
+ @param seconds The auto hide time interval
+ @param delayBlock The delay block
+ */
+- (void)lpa_disableShowText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds delayBlock:(void (^)(void))delayBlock;
+
+/**
+ show a image HUD toast
+
+ @param image The image
+ */
+- (void)lpa_showImage:(UIImage *)image;
+
+/**
+ disable show a image HUD toast
+
+ @param image The image
+ */
+- (void)lpa_disableShowImage:(UIImage *)image;
+
+/**
+ show a image HUD toast with delay block
+
+ @param image The image
+ @param delayBlock The delay block
+ */
+- (void)lpa_showImage:(UIImage *)image delayBlock:(void (^)(void))delayBlock;
+
+/**
+ disable show a image HUD with delay block
+
+ @param image The image
+ @param delayBlock The delay block
+ */
+- (void)lpa_disableShowImage:(UIImage *)image delayBlock:(void (^)(void))delayBlock;
+
+/**
+ show a image HUD with text
+
+ @param image The image
+ @param text The text
+ */
+- (void)lpa_showImage:(UIImage *)image withText:(NSString *)text;
+
+/**
+ disable show a image HUD with text
+
+ @param image The image
+ @param text The text
+ */
+- (void)lpa_disableShowImage:(UIImage *)image withText:(NSString *)text;
+
+/**
+ show a image HUD with text & delay block
+
+ @param image The image
+ @param text The text
+ @param delayBlock The delay block
+ */
+- (void)lpa_showImage:(UIImage *)image withText:(NSString *)text delayBlock:(void (^)(void))delayBlock;
+
+/**
+ disable show a image HUD with text & delay block
+
+ @param image The image
+ @param text The text
+ @param delayBlock The delay block
+ */
+- (void)lpa_disableShowImage:(UIImage *)image withText:(NSString *)text delayBlock:(void (^)(void))delayBlock;
 
 /**
  set the HUD auto hide timeInterval

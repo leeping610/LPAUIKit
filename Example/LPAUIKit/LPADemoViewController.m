@@ -14,6 +14,7 @@
 #import <LPAUIKit/LPATableViewController.h>
 #import <LPAUIKit/LPACollectionViewController.h>
 #import <LPAUIKit/UIView+LPAToastHUD.h>
+#import <LPAUIKit/LPAHUD.h>
 
 @interface LPADemoViewController ()
 
@@ -27,6 +28,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [LPAHUD showInfoWithStatus:@"hahahah"];
 }
 
 - (void)didReceiveMemoryWarning

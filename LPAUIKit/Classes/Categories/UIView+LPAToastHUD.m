@@ -60,11 +60,13 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
 
 - (void)lpa_endLoadingWithSuccess:(NSString *)successText
 {
+    [self lpa_endLoading];
     [self lpa_showText:successText];
 }
 
 - (void)lpa_endLoadingWithFailure:(NSString *)failureText
 {
+    [self lpa_endLoading];
     [self lpa_showText:failureText];
 }
 
@@ -137,11 +139,40 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:[self autoHideTimeInterval]];
 }
 
+- (void)lpa_disableShowText:(NSString *)text
+{
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeText;
+    progressHUD.detailsLabel.text = text;
+    progressHUD.detailsLabel.font = [UIFont boldSystemFontOfSize:LPAToastHUDDetailLabelFontSize];
+    progressHUD.userInteractionEnabled = YES;
+    [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:[self autoHideTimeInterval]];
+}
+
 - (void)lpa_showText:(NSString *)text delayBlock:(void (^)(void))delayBlock
 {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeText;
     progressHUD.detailsLabel.text = text;
+    progressHUD.detailsLabel.font = [UIFont boldSystemFontOfSize:LPAToastHUDDetailLabelFontSize];
+    progressHUD.completionBlock = ^{
+        if (delayBlock) {
+            delayBlock();
+        }
+    };
+    [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:[self autoHideTimeInterval]];
+}
+
+- (void)lpa_disableShowText:(NSString *)text delayBlock:(void (^)(void))delayBlock
+{
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeText;
+    progressHUD.detailsLabel.text = text;
+    progressHUD.userInteractionEnabled = YES;
     progressHUD.detailsLabel.font = [UIFont boldSystemFontOfSize:LPAToastHUDDetailLabelFontSize];
     progressHUD.completionBlock = ^{
         if (delayBlock) {
@@ -164,6 +195,18 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:seconds];
 }
 
+- (void)lpa_disableShowText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds
+{
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeText;
+    progressHUD.detailsLabel.text = text;
+    progressHUD.userInteractionEnabled = YES;
+    progressHUD.detailsLabel.font = [UIFont boldSystemFontOfSize:LPAToastHUDDetailLabelFontSize];
+    [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:seconds];
+}
+
 - (void)lpa_showText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds delayBlock:(void (^)(void))delayBlock
 {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
@@ -178,6 +221,115 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
     [progressHUD showAnimated:YES];
     [progressHUD hideAnimated:YES
                    afterDelay:seconds];
+}
+
+- (void)lpa_disableShowText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds delayBlock:(void (^)(void))delayBlock
+{
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeText;
+    progressHUD.detailsLabel.text = text;
+    progressHUD.userInteractionEnabled = YES;
+    progressHUD.detailsLabel.font = [UIFont boldSystemFontOfSize:LPAToastHUDDetailLabelFontSize];
+    progressHUD.completionBlock = ^{
+        if (delayBlock) {
+            delayBlock();
+        }
+    };
+    [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:seconds];
+}
+
+- (void)lpa_showImage:(UIImage *)image
+{
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeCustomView;
+    progressHUD.customView = [[UIImageView alloc] initWithImage:image];
+    [progressHUD showAnimated:YES];
+}
+
+- (void)lpa_disableShowImage:(UIImage *)image
+{
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeCustomView;
+    progressHUD.customView = [[UIImageView alloc] initWithImage:image];
+    progressHUD.userInteractionEnabled = YES;
+    [progressHUD showAnimated:YES];
+}
+
+- (void)lpa_showImage:(UIImage *)image delayBlock:(void (^)(void))delayBlock
+{
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeCustomView;
+    progressHUD.customView = [[UIImageView alloc] initWithImage:image];
+    progressHUD.completionBlock = ^{
+        if (delayBlock) {
+            delayBlock();
+        }
+    };
+    [progressHUD showAnimated:YES];
+}
+
+- (void)lpa_disableShowImage:(UIImage *)image delayBlock:(void (^)(void))delayBlock
+{
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeCustomView;
+    progressHUD.customView = [[UIImageView alloc] initWithImage:image];
+    progressHUD.userInteractionEnabled = YES;
+    progressHUD.completionBlock = ^{
+        if (delayBlock) {
+            delayBlock();
+        }
+    };
+    [progressHUD showAnimated:YES];
+}
+
+- (void)lpa_showImage:(UIImage *)image withText:(NSString *)text
+{
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeCustomView;
+    progressHUD.customView = [[UIImageView alloc] initWithImage:image];
+    progressHUD.detailsLabel.text = text;
+    [progressHUD showAnimated:YES];
+}
+
+- (void)lpa_disableShowImage:(UIImage *)image withText:(NSString *)text
+{
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeCustomView;
+    progressHUD.customView = [[UIImageView alloc] initWithImage:image];
+    progressHUD.detailsLabel.text = text;
+    progressHUD.userInteractionEnabled = YES;
+    [progressHUD showAnimated:YES];
+}
+
+- (void)lpa_showImage:(UIImage *)image withText:(NSString *)text delayBlock:(void (^)(void))delayBlock
+{
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeCustomView;
+    progressHUD.customView = [[UIImageView alloc] initWithImage:image];
+    progressHUD.detailsLabel.text = text;
+    progressHUD.completionBlock = ^{
+        if (delayBlock) {
+            delayBlock();
+        }
+    };
+    [progressHUD showAnimated:YES];
+}
+
+- (void)lpa_disableShowImage:(UIImage *)image withText:(NSString *)text delayBlock:(void (^)(void))delayBlock
+{
+    MBProgressHUD *progressHUD = [self defaultProgressHUD];
+    progressHUD.mode = MBProgressHUDModeCustomView;
+    progressHUD.customView = [[UIImageView alloc] initWithImage:image];
+    progressHUD.detailsLabel.text = text;
+    progressHUD.userInteractionEnabled = YES;
+    progressHUD.completionBlock = ^{
+        if (delayBlock) {
+            delayBlock();
+        }
+    };
+    [progressHUD showAnimated:YES];
 }
 
 #pragma mark - Config Class Methods
@@ -201,8 +353,8 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
 
 - (MBProgressHUD *)defaultProgressHUD
 {
+    [self lpa_endLoading];
     MBProgressHUD *progressHUD = [[MBProgressHUD alloc] initWithView:self];
-    progressHUD.minShowTime = 2;
     progressHUD.backgroundView.style = (MBProgressHUDBackgroundStyle)[self toastHUDBackgroundStyle];
     progressHUD.animationType = (MBProgressHUDAnimation)[self toastHUDAnimation];
     progressHUD.removeFromSuperViewOnHide = YES;

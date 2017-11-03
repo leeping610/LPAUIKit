@@ -9,13 +9,13 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - LPAUIKit (0.1.0):
+  - LPAUIKit (0.1.2):
     - Masonry
     - MBProgressHUD
     - MJRefresh
   - Masonry (1.1.0)
   - MBProgressHUD (1.0.0)
-  - MJRefresh (3.1.14)
+  - MJRefresh (3.1.15)
   - Specta (1.0.7)
 
 DEPENDENCIES:
@@ -33,10 +33,10 @@ SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   Expecta+Snapshots: dcff217eef506dabd6dfdc7864ea2da321fafbb8
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  LPAUIKit: ccfbf8850a41f9883917f86d83455d58234b8dd1
+  LPAUIKit: 6d284d47772ef887d1f26665053ba16e422f89b5
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  MJRefresh: 6642e35b3227a5447b9fd5e17c552c90196c9859
+  MJRefresh: 9af70f5f9327a2cf87f0fb5929f35fcc2fa638ea
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
 PODFILE CHECKSUM: bd6515d445f34094d4e26284e6909c18577c201a
