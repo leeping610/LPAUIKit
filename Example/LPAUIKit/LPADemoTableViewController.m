@@ -76,21 +76,21 @@
 
 - (void)tableViewDidHeaderPull:(LPATableView *)tableView
 {
-    NSLog(@"%s", __FUNCTION__);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [tableView endRefresh];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [tableView reloadData];
     });
 }
 
 - (void)tableViewDidFooterPull:(LPATableView *)tableView
 {
-    NSLog(@"%s", __FUNCTION__);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         for (NSInteger i = 0; i < 20; i++) {
             [_tableDatas addObject:@(i)];
         }
+        if (_tableDatas.count > 300) {
+            tableView.refreshType = LPATableViewRefreshTypeHeader;
+        }
         [tableView reloadData];
-        tableView.refreshType = LPATableViewRefreshTypeHeader;
     });
 }
 

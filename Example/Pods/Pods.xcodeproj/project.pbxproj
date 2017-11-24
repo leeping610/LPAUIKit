@@ -13,6 +13,10 @@
 		05E73A035D7DB698145DB940B606594A /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F04D5ED1E100A60074651E145BE68DF /* error.png */; };
 		0618DAA1E24E64707897FC17FDA2B47E /* MJRefreshGifHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 78E9578C7F8F53C5FB73FD1D48F4A11E /* MJRefreshGifHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0676595134A6036819E78D0404919486 /* FBSnapshotTestCasePlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = 50115B69D3C239EAA59F8988F48AABEB /* FBSnapshotTestCasePlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		074DCAA21FC7FA0D00A171A7 /* LPAButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 074DCAA01FC7FA0D00A171A7 /* LPAButton.h */; };
+		074DCAA31FC7FA0D00A171A7 /* LPAButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 074DCAA11FC7FA0D00A171A7 /* LPAButton.m */; };
+		074DCAAA1FC8120600A171A7 /* NSString+LPAAttributedString.h in Headers */ = {isa = PBXBuildFile; fileRef = 074DCAA81FC8120600A171A7 /* NSString+LPAAttributedString.h */; };
+		074DCAAB1FC8120600A171A7 /* NSString+LPAAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 074DCAA91FC8120600A171A7 /* NSString+LPAAttributedString.m */; };
 		07F27A53DF6F114B896502A827D4EA66 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D1D667337FD703432B4BEBC6F0A11F /* Foundation.framework */; };
 		082308713D87B64F574C2D7FC48A00F3 /* MJRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2372CBAB5E3D6CFCC190FC6B6644E731 /* MJRefreshHeader.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		09B18A0AFD81C25D53BC3FC246DA2349 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D1D667337FD703432B4BEBC6F0A11F /* Foundation.framework */; };
@@ -398,6 +402,10 @@
 		067413BD2AB34F721D92DACE0CE44386 /* SPTSpec.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SPTSpec.m; path = Specta/Specta/SPTSpec.m; sourceTree = "<group>"; };
 		06852AE47FC8701D3F9603587CAFFDD0 /* EXPFloatTuple.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPFloatTuple.h; path = Expecta/EXPFloatTuple.h; sourceTree = "<group>"; };
 		0730CF5C438D8B64D66639F52E3F01A9 /* SpectaDSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SpectaDSL.h; path = Specta/Specta/SpectaDSL.h; sourceTree = "<group>"; };
+		074DCAA01FC7FA0D00A171A7 /* LPAButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPAButton.h; sourceTree = "<group>"; };
+		074DCAA11FC7FA0D00A171A7 /* LPAButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPAButton.m; sourceTree = "<group>"; };
+		074DCAA81FC8120600A171A7 /* NSString+LPAAttributedString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LPAAttributedString.h"; sourceTree = "<group>"; };
+		074DCAA91FC8120600A171A7 /* NSString+LPAAttributedString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LPAAttributedString.m"; sourceTree = "<group>"; };
 		07B415D639617490C79F4AFD04B2715E /* SpectaUtility.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SpectaUtility.m; path = Specta/Specta/SpectaUtility.m; sourceTree = "<group>"; };
 		07DA4EF451868C8C2C05FE3DDBA98AB9 /* MJRefreshNormalHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshNormalHeader.h; path = MJRefresh/Custom/Header/MJRefreshNormalHeader.h; sourceTree = "<group>"; };
 		08324217C5AB0CC919F7FCEBB4737E4B /* EXPMatchers+beSubclassOf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beSubclassOf.h"; path = "Expecta/Matchers/EXPMatchers+beSubclassOf.h"; sourceTree = "<group>"; };
@@ -820,6 +828,16 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		074DCA9F1FC7F9BE00A171A7 /* LPAButtons */ = {
+			isa = PBXGroup;
+			children = (
+				074DCAA01FC7FA0D00A171A7 /* LPAButton.h */,
+				074DCAA11FC7FA0D00A171A7 /* LPAButton.m */,
+			);
+			name = LPAButtons;
+			path = LPAUIKit/Classes/LPAButtons;
+			sourceTree = "<group>";
+		};
 		30016D69EDC3C2AE5A018AD61472EA83 /* LPATableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -959,6 +977,7 @@
 				B833598AFA72C756840D628DA183F07F /* LPAViewController.h */,
 				7EDF5EB42AAA9ED405A63155251178D2 /* LPAViewController.m */,
 				800C815925416531153CA70646AA96BF /* Categories */,
+				074DCA9F1FC7F9BE00A171A7 /* LPAButtons */,
 				98CC195F4A25BBDCE71F6E89F65560B0 /* LPACollectionView */,
 				A314A684B5E0963D930C68DE560F5F0A /* LPAHUD */,
 				30016D69EDC3C2AE5A018AD61472EA83 /* LPATableView */,
@@ -1091,6 +1110,8 @@
 				90364696338574BF6F7E8658F2AC855E /* UIView+LPAToastHUD.m */,
 				88FC66823E5E2867F9E295B5A98F149B /* UIViewController+LPAAlert.h */,
 				157E6B9230438811E93E20746F3C2D30 /* UIViewController+LPAAlert.m */,
+				074DCAA81FC8120600A171A7 /* NSString+LPAAttributedString.h */,
+				074DCAA91FC8120600A171A7 /* NSString+LPAAttributedString.m */,
 			);
 			name = Categories;
 			path = LPAUIKit/Classes/Categories;
@@ -1517,10 +1538,12 @@
 				F057FB9F695A40728D572A5E972E97F6 /* LPATableViewItem.h in Headers */,
 				B3A9BD17EE96E7903D14744F9BDA19A1 /* LPATableViewManager.h in Headers */,
 				B5CEB3B1C0F25BC4640859DF97FD1DF0 /* LPATableViewSection.h in Headers */,
+				074DCAAA1FC8120600A171A7 /* NSString+LPAAttributedString.h in Headers */,
 				AAF67380ABE922B0495339C95DE2A5E4 /* LPAUIKit-umbrella.h in Headers */,
 				8570E5F9B00293B795228CDBA37BD6A3 /* LPAUIKit.h in Headers */,
 				38711A148FCDF656935F8A66A022C96D /* LPAViewController.h in Headers */,
 				B8F2E7D7E9813E2F36809554E69502BE /* UIView+LPAToastHUD.h in Headers */,
+				074DCAA21FC7FA0D00A171A7 /* LPAButton.h in Headers */,
 				AC33861F3912888FDAB0E8B2AD649760 /* UIViewController+LPAAlert.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2024,6 +2047,8 @@
 				AA28EACF2565F5CDFD8AF1FA61FC1EF6 /* LPAViewController.m in Sources */,
 				B41D98A85A5E52DB01755907C8BD7CD9 /* UIView+LPAToastHUD.m in Sources */,
 				688D6517575C00E42CF3455FCAFD2A83 /* UIViewController+LPAAlert.m in Sources */,
+				074DCAAB1FC8120600A171A7 /* NSString+LPAAttributedString.m in Sources */,
+				074DCAA31FC7FA0D00A171A7 /* LPAButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
