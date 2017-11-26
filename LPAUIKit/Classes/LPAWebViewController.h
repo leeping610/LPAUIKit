@@ -9,4 +9,12 @@
 
 @interface LPAWebViewController : LPAViewController
 
+@property (nonatomic, strong, readonly) NSURL *requestURL;
+
+@property (nonatomic, strong) UIColor *progressBarTintColor;
+@property (nonatomic, strong) UIColor *progressBarTrackTintColor;
+
+- (instancetype)initWithURL:(NSURL *)URL;
+- (instancetype)initWithURLString:(NSString *)URLString;
+
 @end

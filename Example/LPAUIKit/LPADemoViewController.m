@@ -9,6 +9,7 @@
 #import "LPADemoViewController.h"
 #import "LPADemoTableViewController.h"
 #import "LPADemoCollectionViewController.h"
+#import "LPADemoWebViewController.h"
 
 #import <LPAUIKit/LPAUIKit.h>
 #import <LPAUIKit/LPATableViewController.h>
@@ -50,4 +51,9 @@
     [self.navigationController pushViewController:collectionViewController animated:YES];
 }
 
+- (IBAction)webViewButtonHandler:(id)sender
+{
+    LPADemoWebViewController *webViewController = [[LPADemoWebViewController alloc] initWithURLString:@"https://www.baidu.com"];
+    [self.navigationController pushViewController:webViewController animated:YES];
+}
 @end
