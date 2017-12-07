@@ -8,8 +8,20 @@
 #ifndef LPAUIKit_h
 #define LPAUIKit_h
 
-#import "LPAViewController.h"
-#import "LPATableViewController.h"
-#import "LPANavigationController.h"
+// viewControllers
+#import <LPAUIKit/LPAViewController.h>
+#import <LPAUIKit/LPATableViewController.h>
+#import <LPAUIKit/LPANavigationController.h>
+
+// Categories
+#import <LPAUIKit/NSString+LPAAttributedString.h>
+#import <LPAUIKit/UIView+LPAToastHUD.h>
+#import <LPAUIKit/UIViewController+LPAAlert.h>
+
+// Views
+#import <LPAUIKit/LPAButton.h>
+
+// LPATableViewManager
+#import <LPAUIKit/LPATableViewManager.h>
 
 #endif /* LPAUIKit_h */
