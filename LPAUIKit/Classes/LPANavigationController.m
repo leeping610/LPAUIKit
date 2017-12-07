@@ -44,4 +44,16 @@
     return [self.topViewController preferredStatusBarUpdateAnimation];
 }
 
+#pragma mark - UIInterfaceOrientation
+
+- (BOOL)shouldAutorotate
+{
+    return [self.topViewController shouldAutorotate];
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [self.topViewController supportedInterfaceOrientations];
+}
+
 @end

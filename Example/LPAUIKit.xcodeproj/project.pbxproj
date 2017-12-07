@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06FCC3DEC27D0D49E0854DE8 /* Pods_LPAUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC19821EC65DE1B2D0FED1A /* Pods_LPAUIKit_Example.framework */; };
 		072A03901F987FDE00CE59C8 /* LPADemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 072A038F1F987FDE00CE59C8 /* LPADemoTableViewController.m */; };
 		072A03931F987FF900CE59C8 /* LPADemoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 072A03921F987FF900CE59C8 /* LPADemoCollectionViewController.m */; };
 		074DCAB61FCAEA2F00A171A7 /* LPADemoWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074DCAB51FCAEA2F00A171A7 /* LPADemoWebViewController.m */; };
-		178406E743F7BFC386F6F4D4 /* Pods_LPAUIKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63AE3298B8DE66EC58102943 /* Pods_LPAUIKit_Tests.framework */; };
+		53F750F94E7684FADEEC2E4A /* Pods_LPAUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B15DB8F34276525E0A5AF68 /* Pods_LPAUIKit_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -27,6 +26,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		EEAD0162E256206F4FFFA2BC /* Pods_LPAUIKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6CF8652984E8BA68BC99A /* Pods_LPAUIKit_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +49,6 @@
 		0C8B662E7BB7F29C38972B93 /* Pods-LPAUIKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPAUIKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LPAUIKit_Tests/Pods-LPAUIKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		17A91B430FED294DB966953F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2ECECB9AF0E1BAD653C992D4 /* LPAUIKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LPAUIKit.podspec; path = ../LPAUIKit.podspec; sourceTree = "<group>"; };
-		4CC19821EC65DE1B2D0FED1A /* Pods_LPAUIKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPAUIKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* LPAUIKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPAUIKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -69,10 +68,11 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		63AE3298B8DE66EC58102943 /* Pods_LPAUIKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPAUIKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		775C3BAAA0E6B1CFD739CF2E /* Pods-LPAUIKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPAUIKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LPAUIKit_Tests/Pods-LPAUIKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8B15DB8F34276525E0A5AF68 /* Pods_LPAUIKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPAUIKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CA6CF8652984E8BA68BC99A /* Pods_LPAUIKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPAUIKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B421959E430BE08DE37C3524 /* Pods-LPAUIKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPAUIKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LPAUIKit_Example/Pods-LPAUIKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D52F6BF4866745317B554443 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F7070DBBE7C9279387CF09F9 /* Pods-LPAUIKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPAUIKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-LPAUIKit_Example/Pods-LPAUIKit_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				06FCC3DEC27D0D49E0854DE8 /* Pods_LPAUIKit_Example.framework in Frameworks */,
+				53F750F94E7684FADEEC2E4A /* Pods_LPAUIKit_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +97,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				178406E743F7BFC386F6F4D4 /* Pods_LPAUIKit_Tests.framework in Frameworks */,
+				EEAD0162E256206F4FFFA2BC /* Pods_LPAUIKit_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,8 +132,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				4CC19821EC65DE1B2D0FED1A /* Pods_LPAUIKit_Example.framework */,
-				63AE3298B8DE66EC58102943 /* Pods_LPAUIKit_Tests.framework */,
+				8B15DB8F34276525E0A5AF68 /* Pods_LPAUIKit_Example.framework */,
+				9CA6CF8652984E8BA68BC99A /* Pods_LPAUIKit_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -422,9 +422,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LPAUIKit_Example/Pods-LPAUIKit_Example-resources.sh",
+				"${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle",
+				"$PODS_CONFIGURATION_BUILD_DIR/LPAUIKit/LPAUIKit.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
