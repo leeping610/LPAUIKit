@@ -11,6 +11,7 @@
 // viewControllers
 #import <LPAUIKit/LPAViewController.h>
 #import <LPAUIKit/LPATableViewController.h>
+#import <LPAUIKit/LPACollectionViewController.h>
 #import <LPAUIKit/LPANavigationController.h>
 
 // Categories
@@ -23,5 +24,8 @@
 
 // LPATableViewManager
 #import <LPAUIKit/LPATableViewManager.h>
+
+// LPAHUD
+#import <LPAUIKit/LPAHUD.h>
 
 #endif /* LPAUIKit_h */

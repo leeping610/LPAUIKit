@@ -8,7 +8,7 @@
 
 #import "LPADemoTableViewController.h"
 
-#import <LPAUIKit/LPATableView.h>
+#import <LPAUIKit/LPAUIKit.h>
 
 @interface LPADemoTableViewController () <LPATableViewDelegate,
                                           UITableViewDelegate,

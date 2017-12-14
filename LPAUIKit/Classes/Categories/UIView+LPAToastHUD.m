@@ -246,6 +246,8 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
     progressHUD.mode = MBProgressHUDModeCustomView;
     progressHUD.customView = [[UIImageView alloc] initWithImage:image];
     [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:[self autoHideTimeInterval]];
 }
 
 - (void)lpa_disableShowImage:(UIImage *)image
@@ -255,6 +257,8 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
     progressHUD.customView = [[UIImageView alloc] initWithImage:image];
     progressHUD.userInteractionEnabled = YES;
     [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:[self autoHideTimeInterval]];
 }
 
 - (void)lpa_showImage:(UIImage *)image delayBlock:(void (^)(void))delayBlock
@@ -268,6 +272,8 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
         }
     };
     [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:[self autoHideTimeInterval]];
 }
 
 - (void)lpa_disableShowImage:(UIImage *)image delayBlock:(void (^)(void))delayBlock
@@ -282,6 +288,8 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
         }
     };
     [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:[self autoHideTimeInterval]];
 }
 
 - (void)lpa_showImage:(UIImage *)image withText:(NSString *)text
@@ -291,6 +299,8 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
     progressHUD.customView = [[UIImageView alloc] initWithImage:image];
     progressHUD.detailsLabel.text = text;
     [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:[self autoHideTimeInterval]];
 }
 
 - (void)lpa_disableShowImage:(UIImage *)image withText:(NSString *)text
@@ -301,6 +311,8 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
     progressHUD.detailsLabel.text = text;
     progressHUD.userInteractionEnabled = YES;
     [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:[self autoHideTimeInterval]];
 }
 
 - (void)lpa_showImage:(UIImage *)image withText:(NSString *)text delayBlock:(void (^)(void))delayBlock
@@ -315,6 +327,8 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
         }
     };
     [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:[self autoHideTimeInterval]];
 }
 
 - (void)lpa_disableShowImage:(UIImage *)image withText:(NSString *)text delayBlock:(void (^)(void))delayBlock
@@ -330,6 +344,8 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
         }
     };
     [progressHUD showAnimated:YES];
+    [progressHUD hideAnimated:YES
+                   afterDelay:[self autoHideTimeInterval]];
 }
 
 #pragma mark - Config Class Methods

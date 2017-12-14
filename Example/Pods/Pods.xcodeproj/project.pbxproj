@@ -414,7 +414,7 @@
 		0B5289699A005BE876E96C88AD64358E /* ExpectaSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ExpectaSupport.h; path = Expecta/ExpectaSupport.h; sourceTree = "<group>"; };
 		0BAC95E5D97C734ECD466D20765C2259 /* EXPUnsupportedObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXPUnsupportedObject.m; path = Expecta/EXPUnsupportedObject.m; sourceTree = "<group>"; };
 		0BB940C1F86FBE2CB5785AA9918BAE7B /* LPATableView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPATableView.m; sourceTree = "<group>"; };
-		0D6C2C09B4942D444503ABEC30B492F1 /* Pods_LPAUIKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPAUIKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D6C2C09B4942D444503ABEC30B492F1 /* Pods_LPAUIKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LPAUIKit_Example.framework; path = "Pods-LPAUIKit_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DB120996C576CB09C61D6D861C59CBF /* MJRefresh-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJRefresh-umbrella.h"; sourceTree = "<group>"; };
 		0DC02FDDDA9BDAD8B394EB51B778F950 /* MJRefreshComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshComponent.h; path = MJRefresh/Base/MJRefreshComponent.h; sourceTree = "<group>"; };
 		0E822C620A7929978750022C2712B8EB /* MJRefreshStateHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshStateHeader.m; path = MJRefresh/Custom/Header/MJRefreshStateHeader.m; sourceTree = "<group>"; };
@@ -424,7 +424,7 @@
 		12B5DA0FC34CD3F4BD2104B4935B48CA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		12F0457CCF5F6841713AC1D4CFB0147C /* Pods-LPAUIKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LPAUIKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		13059B4260D2793DF55FBC9C083C91DF /* UIImage+Diff.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Diff.h"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.h"; sourceTree = "<group>"; };
-		157FA990F54CF7139999905D726876B3 /* Pods-LPAUIKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-LPAUIKit_Tests.modulemap"; sourceTree = "<group>"; };
+		157FA990F54CF7139999905D726876B3 /* Pods-LPAUIKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-LPAUIKit_Tests.modulemap"; sourceTree = "<group>"; };
 		15CCB6C232ED5155E9BCF90D655B7315 /* FBSnapshotTestCasePlatform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCasePlatform.m; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.m; sourceTree = "<group>"; };
 		175DB29EA8FA73DCA6114DDC575177EC /* ExpectaObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ExpectaObject.h; path = Expecta/ExpectaObject.h; sourceTree = "<group>"; };
 		1883B7AF71D920D739C7A09F2E96403C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -437,7 +437,7 @@
 		20C5552C2A40630F46050A60286E8C15 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		20D00EF4D0D6C9E967C76296C545249D /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.m"; sourceTree = "<group>"; };
 		21F820574F9DB5E5B4031D7A73FC65A9 /* LPATableViewManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPATableViewManager.m; sourceTree = "<group>"; };
-		21FAE1CF28C095BE4BDA669246C66795 /* MJRefresh.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MJRefresh.modulemap; sourceTree = "<group>"; };
+		21FAE1CF28C095BE4BDA669246C66795 /* MJRefresh.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MJRefresh.modulemap; sourceTree = "<group>"; };
 		232323619CA2CFE50B69A959BDD9D349 /* UIView+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+MJExtension.h"; path = "MJRefresh/UIView+MJExtension.h"; sourceTree = "<group>"; };
 		2372CBAB5E3D6CFCC190FC6B6644E731 /* MJRefreshHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshHeader.m; path = MJRefresh/Base/MJRefreshHeader.m; sourceTree = "<group>"; };
 		23A54B829FC062D7B627980C056318DF /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
@@ -452,7 +452,7 @@
 		2720F97C6DE55BBD0ACD1E321B802448 /* LPATableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPATableViewCell.m; sourceTree = "<group>"; };
 		274D533E766BAB5F873FB5060D851C6F /* MJRefresh-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MJRefresh-dummy.m"; sourceTree = "<group>"; };
 		279F5AD6F64834A6D76E8EF2F3DF98D2 /* NSString+LPAAttributedString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString+LPAAttributedString.h"; sourceTree = "<group>"; };
-		2807C893872B1DA42F0EFACD42831AFE /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
+		2807C893872B1DA42F0EFACD42831AFE /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
 		297FE47E017FE0EE6A44CD3DA8A1CDE1 /* Masonry-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Masonry-dummy.m"; sourceTree = "<group>"; };
 		29B39C4EB2FACAEDDE152F02F85E81FC /* EXPMatchers+respondTo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+respondTo.h"; path = "Expecta/Matchers/EXPMatchers+respondTo.h"; sourceTree = "<group>"; };
 		2B940E0F63153048E4BCC00B233AC9A3 /* LPANavigationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LPANavigationController.m; path = LPAUIKit/Classes/LPANavigationController.m; sourceTree = "<group>"; };
@@ -464,7 +464,7 @@
 		2D635DF3F137FA33667F2B38AA92B8EE /* NSValue+Expecta.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSValue+Expecta.h"; path = "Expecta/NSValue+Expecta.h"; sourceTree = "<group>"; };
 		2E1D28FEFB395742F0503ED2E237CD65 /* MJRefreshStateHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshStateHeader.h; path = MJRefresh/Custom/Header/MJRefreshStateHeader.h; sourceTree = "<group>"; };
 		2E89C58DDA27A2D61046C4B060AFCC0A /* MJRefreshBackStateFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackStateFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.m; sourceTree = "<group>"; };
-		2FB3F36CF3D137E132E41D1F178129CE /* Pods_LPAUIKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPAUIKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FB3F36CF3D137E132E41D1F178129CE /* Pods_LPAUIKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LPAUIKit_Tests.framework; path = "Pods-LPAUIKit_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FD9195697098880ADA4A023EB9E6D0C /* NSValue+Expecta.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSValue+Expecta.m"; path = "Expecta/NSValue+Expecta.m"; sourceTree = "<group>"; };
 		3019A467BD583B5990FF29122781440D /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
 		3075374F005AD733C816AF0C8514A73F /* SPTExampleGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SPTExampleGroup.m; path = Specta/Specta/SPTExampleGroup.m; sourceTree = "<group>"; };
@@ -488,7 +488,7 @@
 		3C9A9C4C0B3EF3A87534AB0DF9E191C2 /* UIViewController+LPAAlert.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LPAAlert.m"; sourceTree = "<group>"; };
 		3D81BDD2A4D128F2AC8DEAC12C728D42 /* UIImage+Compare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Compare.h"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.h"; sourceTree = "<group>"; };
 		3D8A902CFB92447E5F381A397C9365F9 /* SpectaTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SpectaTypes.h; path = Specta/Specta/SpectaTypes.h; sourceTree = "<group>"; };
-		3E5CD3007491A852BE2D3259E998C5B4 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E5CD3007491A852BE2D3259E998C5B4 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBProgressHUD.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F63542954B7A875D00448A00D19BABB /* LPATableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPATableViewController.m; sourceTree = "<group>"; };
 		408D8B60DD3A4B94A87DEA71D7AC12C9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		409E036A62BD7475F13E7BA0C09F51FD /* SPTExample.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPTExample.h; path = Specta/Specta/SPTExample.h; sourceTree = "<group>"; };
@@ -497,11 +497,11 @@
 		43BA4A625CA2986EBAC84827CC4B335C /* SPTExcludeGlobalBeforeAfterEach.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPTExcludeGlobalBeforeAfterEach.h; path = Specta/Specta/SPTExcludeGlobalBeforeAfterEach.h; sourceTree = "<group>"; };
 		49EF53632D6F683DDA3427BB9CEA6DAA /* EXPMatchers+beGreaterThan.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beGreaterThan.h"; path = "Expecta/Matchers/EXPMatchers+beGreaterThan.h"; sourceTree = "<group>"; };
 		4ADC2CA75155A045AA249F948FA38E7A /* LPACollectionViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LPACollectionViewController.h; sourceTree = "<group>"; };
-		4AFB8EB95D6B45F159C8DB8E9D2153F5 /* Pods-LPAUIKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-LPAUIKit_Example.modulemap"; sourceTree = "<group>"; };
+		4AFB8EB95D6B45F159C8DB8E9D2153F5 /* Pods-LPAUIKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-LPAUIKit_Example.modulemap"; sourceTree = "<group>"; };
 		4DCE7CCE48E70B7A22EB523AF84F42CF /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
 		4E5C1932D73BC9B19BE9945211799D1B /* EXPMatchers+beGreaterThanOrEqualTo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beGreaterThanOrEqualTo.m"; path = "Expecta/Matchers/EXPMatchers+beGreaterThanOrEqualTo.m"; sourceTree = "<group>"; };
 		4F4A271553FE12DB3168221D22630C5B /* info@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "info@2x.png"; path = "LPAUIKit/Assets/info@2x.png"; sourceTree = "<group>"; };
-		4FF08B061F0BB176BEA15200B043330A /* FBSnapshotTestCase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FBSnapshotTestCase.modulemap; sourceTree = "<group>"; };
+		4FF08B061F0BB176BEA15200B043330A /* FBSnapshotTestCase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = FBSnapshotTestCase.modulemap; sourceTree = "<group>"; };
 		50115B69D3C239EAA59F8988F48AABEB /* FBSnapshotTestCasePlatform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCasePlatform.h; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.h; sourceTree = "<group>"; };
 		52CE72B5571C8991355F2171153FE264 /* EXPMatchers+respondTo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+respondTo.m"; path = "Expecta/Matchers/EXPMatchers+respondTo.m"; sourceTree = "<group>"; };
 		52DC473C699F10182866D2808A990D0C /* EXPMatchers+beNil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beNil.h"; path = "Expecta/Matchers/EXPMatchers+beNil.h"; sourceTree = "<group>"; };
@@ -514,7 +514,7 @@
 		56A973516DF6C76862E457CF7BA67002 /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
 		57702C728F69BCDDAF9A51E8E48545CF /* LPANavigationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LPANavigationController.h; path = LPAUIKit/Classes/LPANavigationController.h; sourceTree = "<group>"; };
 		57C93034D501309F6FC4E454B033A95B /* Expecta-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Expecta-dummy.m"; sourceTree = "<group>"; };
-		591383475FF63A590D102C483273C3A5 /* Expecta+Snapshots.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Expecta+Snapshots.modulemap"; sourceTree = "<group>"; };
+		591383475FF63A590D102C483273C3A5 /* Expecta+Snapshots.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Expecta+Snapshots.modulemap"; sourceTree = "<group>"; };
 		59FA7E1D686B1E04CF0973267B11F7AB /* LPATableViewItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LPATableViewItem.h; sourceTree = "<group>"; };
 		5A6405911EBEA350C39A4ECC86B09AFB /* EXPMatchers+raiseWithReason.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+raiseWithReason.h"; path = "Expecta/Matchers/EXPMatchers+raiseWithReason.h"; sourceTree = "<group>"; };
 		5AABBB2354FBCAFD0BF8CF728EC0D7C1 /* UIViewController+LPAAlert.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LPAAlert.h"; sourceTree = "<group>"; };
@@ -535,7 +535,7 @@
 		6359F3648A7406D8DBA2A4F9E33CB9FD /* EXPBlockDefinedMatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXPBlockDefinedMatcher.m; path = Expecta/EXPBlockDefinedMatcher.m; sourceTree = "<group>"; };
 		63686564191DB79D7AB76A32DA42CBEE /* Expecta+Snapshots-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Expecta+Snapshots-dummy.m"; sourceTree = "<group>"; };
 		64A2F1E58A8DF388215A9F3FC1D33CA1 /* Pods-LPAUIKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LPAUIKit_Tests-umbrella.h"; sourceTree = "<group>"; };
-		66420186EA610FC487EC1D0AC89E6F16 /* Expecta.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Expecta.modulemap; sourceTree = "<group>"; };
+		66420186EA610FC487EC1D0AC89E6F16 /* Expecta.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Expecta.modulemap; sourceTree = "<group>"; };
 		66BC7F60C47BB1F02B8E63CA34A084D0 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackFooter.h; path = MJRefresh/Base/MJRefreshBackFooter.h; sourceTree = "<group>"; };
 		6941258209822B6C255CCA8496CF28F7 /* EXPMatcherHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPMatcherHelpers.h; path = Expecta/Matchers/EXPMatcherHelpers.h; sourceTree = "<group>"; };
 		6B2A3ADFB3C5ABA639ADC7F1E2A3BCAA /* EXPMatchers+beTruthy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beTruthy.m"; path = "Expecta/Matchers/EXPMatchers+beTruthy.m"; sourceTree = "<group>"; };
@@ -546,9 +546,9 @@
 		7005AD2D56279E7EBA0A115B1269E01E /* MASViewAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewAttribute.h; path = Masonry/MASViewAttribute.h; sourceTree = "<group>"; };
 		70ACCA8D811D5B5CA1EA914AAEE989DA /* Expecta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Expecta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		720839CE7C1F8F15DAC76056AB5B6136 /* Pods-LPAUIKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LPAUIKit_Tests-dummy.m"; sourceTree = "<group>"; };
-		729A3732D76A951AA259ABD4893EAEDE /* Expecta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Expecta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		730A1CEF9BBFC67F6C2E25AC2F1C0A2E /* LPAUIKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = LPAUIKit.modulemap; sourceTree = "<group>"; };
-		74209A13CA117F1C2FF84F4200518977 /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		729A3732D76A951AA259ABD4893EAEDE /* Expecta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Expecta.framework; path = Expecta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		730A1CEF9BBFC67F6C2E25AC2F1C0A2E /* LPAUIKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = LPAUIKit.modulemap; sourceTree = "<group>"; };
+		74209A13CA117F1C2FF84F4200518977 /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MJRefresh.framework; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F1B5F0C4C82E03ECBF0C8AD3DAC197 /* FBSnapshotTestCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCase.m; path = FBSnapshotTestCase/FBSnapshotTestCase.m; sourceTree = "<group>"; };
 		75239FC2F34B779AFA2FE57270B598F0 /* EXPMatchers+beGreaterThanOrEqualTo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beGreaterThanOrEqualTo.h"; path = "Expecta/Matchers/EXPMatchers+beGreaterThanOrEqualTo.h"; sourceTree = "<group>"; };
 		7611883606E57320482CA4537CB8DD7D /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -572,7 +572,7 @@
 		8252790B1C8AEB7D70165D5548005900 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
 		82FF136D827278ADFC731D2CE3AE6D0B /* LPATableViewItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPATableViewItem.m; sourceTree = "<group>"; };
 		83A630BAFC4F09A3A86D67AE5448D1E1 /* SPTCompiledExample.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPTCompiledExample.h; path = Specta/Specta/SPTCompiledExample.h; sourceTree = "<group>"; };
-		83C9F1684D553B9A7E333E5AEEE3A189 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83C9F1684D553B9A7E333E5AEEE3A189 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Masonry.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84517EDBE7787BFB1591F169D0B4C828 /* Pods-LPAUIKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LPAUIKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		84AAAA0AB616FED0C17129D09669BC98 /* EXPDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPDefines.h; path = Expecta/EXPDefines.h; sourceTree = "<group>"; };
 		84B4A936B84C9F08D0D5BBC785737463 /* EXPMatchers+beInstanceOf.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beInstanceOf.m"; path = "Expecta/Matchers/EXPMatchers+beInstanceOf.m"; sourceTree = "<group>"; };
@@ -580,7 +580,7 @@
 		854864470AE141B8359521D1DB5A8E4E /* MJRefresh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MJRefresh.xcconfig; sourceTree = "<group>"; };
 		8603B3AA647EA05156AE1614D88ABCAA /* SpectaUtility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SpectaUtility.h; path = Specta/Specta/SpectaUtility.h; sourceTree = "<group>"; };
 		8672E4B5D4210A83C9F4E8595230D69B /* EXPExpect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPExpect.h; path = Expecta/EXPExpect.h; sourceTree = "<group>"; };
-		86F71C50946804BB3B4FBBD0A29C8FCA /* Expecta_Snapshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Expecta_Snapshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86F71C50946804BB3B4FBBD0A29C8FCA /* Expecta_Snapshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Expecta_Snapshots.framework; path = "Expecta+Snapshots.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AB5B5B1FEB6DB37457CF879830EB961 /* Pods-LPAUIKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LPAUIKit_Example-frameworks.sh"; sourceTree = "<group>"; };
 		8BB3A1BF4425AB349B1CCEAFB91557CE /* UIView+MJExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+MJExtension.m"; path = "MJRefresh/UIView+MJExtension.m"; sourceTree = "<group>"; };
 		8C8CE4A0598C3A055F5E77447FD5C6AA /* Pods-LPAUIKit_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LPAUIKit_Tests-frameworks.sh"; sourceTree = "<group>"; };
@@ -598,8 +598,8 @@
 		90F6E9D2BAB76CE2369304CA46D39C3C /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
 		9184D57FCA66CEEDE1369B386540B308 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		92F3508DB7D664B0D1C11445653239E0 /* Expecta-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Expecta-prefix.pch"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9594C8BD40E841D57D06DE54D09ABEAF /* LPAUIKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LPAUIKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9594C8BD40E841D57D06DE54D09ABEAF /* LPAUIKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = LPAUIKit.bundle; path = LPAUIKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FD2F6FC424E2570358A8536E59BBA0 /* Pods-LPAUIKit_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LPAUIKit_Example-resources.sh"; sourceTree = "<group>"; };
 		96714C161A9ABDDCD7F826AE2E3F405E /* UIView+LPAToastHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIView+LPAToastHUD.m"; sourceTree = "<group>"; };
 		976392D83E6138D6EA2F896F2467AECE /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
@@ -609,7 +609,7 @@
 		9C72A2FA5C4D808BF2839149B81F9C1C /* EXPMatchers+beginWith.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beginWith.h"; path = "Expecta/Matchers/EXPMatchers+beginWith.h"; sourceTree = "<group>"; };
 		9CB5BE2790303FA74DEFC6A16415146F /* MJRefreshFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshFooter.m; path = MJRefresh/Base/MJRefreshFooter.m; sourceTree = "<group>"; };
 		9D776D9AA936C56FB088F447A4FF221F /* Pods-LPAUIKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LPAUIKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		9E02F4A91166611025DC12FF8DE1C5E7 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E02F4A91166611025DC12FF8DE1C5E7 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBSnapshotTestCase.framework; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF0981975D0FD97D6F056D7A8D4EE42 /* LPACollectionViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPACollectionViewController.m; sourceTree = "<group>"; };
 		A04E87AE735E95A0F813DC24F0D56FE8 /* success@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "success@2x.png"; path = "LPAUIKit/Assets/success@2x.png"; sourceTree = "<group>"; };
 		A1E03A31F828361E3A079C52C1BE021A /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoFooter.m; path = MJRefresh/Base/MJRefreshAutoFooter.m; sourceTree = "<group>"; };
@@ -667,7 +667,7 @@
 		CFB579DA1B7D251561A8AD3169720888 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
 		CFBAEB2A62F88FA1A72EB182A2F2FA6E /* EXPMatchers+beCloseTo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beCloseTo.h"; path = "Expecta/Matchers/EXPMatchers+beCloseTo.h"; sourceTree = "<group>"; };
 		D041C10C69D5AD18A880EED980FEDE6E /* EXPMatchers+beLessThan.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beLessThan.h"; path = "Expecta/Matchers/EXPMatchers+beLessThan.h"; sourceTree = "<group>"; };
-		D1F43EA70A6D2EA57C54AE86F71C16B1 /* Specta.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Specta.modulemap; sourceTree = "<group>"; };
+		D1F43EA70A6D2EA57C54AE86F71C16B1 /* Specta.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Specta.modulemap; sourceTree = "<group>"; };
 		D22BC762B9448AEF083BF7D9CD2A68A6 /* FBSnapshotTestCase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FBSnapshotTestCase-dummy.m"; sourceTree = "<group>"; };
 		D529F300CBBE179E8D7DC4B67BAD40BF /* UIImage+Snapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Snapshot.h"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.h"; sourceTree = "<group>"; };
 		D6499B56452E542223B8142B928084D1 /* Pods-LPAUIKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LPAUIKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -693,7 +693,7 @@
 		EA30E99BFF395B5B999507ED4974C003 /* Specta-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Specta-prefix.pch"; sourceTree = "<group>"; };
 		EA4004F87B7DB46483CDACF659724623 /* LPAViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LPAViewController.m; path = LPAUIKit/Classes/LPAViewController.m; sourceTree = "<group>"; };
 		ECB9742B6166B31CE39586AEBE03FBCA /* MJRefreshFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshFooter.h; path = MJRefresh/Base/MJRefreshFooter.h; sourceTree = "<group>"; };
-		ED0AB309C0D4950F6435CC467E5E9206 /* Specta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Specta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED0AB309C0D4950F6435CC467E5E9206 /* Specta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Specta.framework; path = Specta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE7ED00634FC68B73D0A98C0E962BF03 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		EFD70ECBC80426508E9088C41EAE3734 /* Specta-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Specta-umbrella.h"; sourceTree = "<group>"; };
 		F0C000BF5C57EDABB61FB5C735383BC2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -701,10 +701,10 @@
 		F13B8FBD754153732B07826C34AEF087 /* Expecta+Snapshots.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Expecta+Snapshots.xcconfig"; sourceTree = "<group>"; };
 		F1ADB1F65749CF66F6D704A31A622197 /* EXPMatchers+raise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+raise.h"; path = "Expecta/Matchers/EXPMatchers+raise.h"; sourceTree = "<group>"; };
 		F1BD6C004ED2B06FE060D39E94386E26 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
-		F227AF6CAD5219B81C780BBD1E9B264B /* LPAUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LPAUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F227AF6CAD5219B81C780BBD1E9B264B /* LPAUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = LPAUIKit.framework; path = LPAUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44594E77F2DF37467DD6744ED8F944D /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
 		F509759DBD6FDD68203635EA5CF07E2D /* EXPMatchers+beFalsy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beFalsy.h"; path = "Expecta/Matchers/EXPMatchers+beFalsy.h"; sourceTree = "<group>"; };
-		F5E503775C8C6F71288DEC1D26BF0BF7 /* Masonry.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Masonry.modulemap; sourceTree = "<group>"; };
+		F5E503775C8C6F71288DEC1D26BF0BF7 /* Masonry.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Masonry.modulemap; sourceTree = "<group>"; };
 		F61864EEE793B9DAB29BF920690C2B4B /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		FAFC2EFF28C1C5311E23925AB9BB476C /* LPAUIKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LPAUIKit-umbrella.h"; sourceTree = "<group>"; };
 		FD4B9C7F4138405D16F0DE05C9EDFEAB /* ExpectaObject+FBSnapshotTest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ExpectaObject+FBSnapshotTest.m"; sourceTree = "<group>"; };
@@ -910,6 +910,7 @@
 				48BD185D07386DF13AB558CE73914500 /* Support Files */,
 				A934689367DAE8DE729F87A3EC407F56 /* SwiftSupport */,
 			);
+			name = FBSnapshotTestCase;
 			path = FBSnapshotTestCase;
 			sourceTree = "<group>";
 		};
@@ -943,6 +944,7 @@
 				C9849D2C13187E97CB6B7D52FF55D9A0 /* XCTestCase+Specta.m */,
 				88D86EC77A94B84E84D6435648E83347 /* Support Files */,
 			);
+			name = Specta;
 			path = Specta;
 			sourceTree = "<group>";
 		};
@@ -1014,6 +1016,7 @@
 				CC9FE766EEC78FA98AD24FC6E4CFAD83 /* Resources */,
 				AC5532465A2C3870AD4DD72722A1BF0B /* Support Files */,
 			);
+			name = MJRefresh;
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
@@ -1047,6 +1050,7 @@
 				20C5552C2A40630F46050A60286E8C15 /* ViewController+MASAdditions.m */,
 				E0AE58EC23F8D72755A70FD6BB5FE33B /* Support Files */,
 			);
+			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -1209,6 +1213,7 @@
 				2FD9195697098880ADA4A023EB9E6D0C /* NSValue+Expecta.m */,
 				CC1B798F368784BF90AE43EB138BAAD7 /* Support Files */,
 			);
+			name = Expecta;
 			path = Expecta;
 			sourceTree = "<group>";
 		};
@@ -1267,9 +1272,9 @@
 		B0CCB335E816C1A821CABE2FAEC23048 /* LPAUIKit */ = {
 			isa = PBXGroup;
 			children = (
-				5D1F9578A9AD2B1C37380EFEF0226654 /* LPAUIKit.h */,
 				57702C728F69BCDDAF9A51E8E48545CF /* LPANavigationController.h */,
 				2B940E0F63153048E4BCC00B233AC9A3 /* LPANavigationController.m */,
+				5D1F9578A9AD2B1C37380EFEF0226654 /* LPAUIKit.h */,
 				7E1A8C36040B2AB8F56EB781BAAB0035 /* LPAViewController.h */,
 				EA4004F87B7DB46483CDACF659724623 /* LPAViewController.m */,
 				605A55A8F02E158950568E4316082DA0 /* LPAWebViewController.h */,
@@ -1358,6 +1363,7 @@
 				C9274DDE1637529611C8EF6A077FF2DE /* EXPMatchers+FBSnapshotTest.m */,
 				4BB5D0E509457E683E281BF6ABBDFF7F /* Support Files */,
 			);
+			name = "Expecta+Snapshots";
 			path = "Expecta+Snapshots";
 			sourceTree = "<group>";
 		};
@@ -1432,6 +1438,7 @@
 				F61864EEE793B9DAB29BF920690C2B4B /* MBProgressHUD.m */,
 				EED061466F62447BC39EB2063DAC3F97 /* Support Files */,
 			);
+			name = MBProgressHUD;
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
