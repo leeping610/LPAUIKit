@@ -6,8 +6,8 @@
 //  Copyright © 2017年 leeping610. All rights reserved.
 //
 
-#import <LPAUIKit/LPAWebViewController.h>
+#import <LPAUIKit/LPAUIKit.h>
 
-@interface LPADemoWebViewController : LPAWebViewController
+@interface LPADemoWebViewController : UIViewController
 
 @end

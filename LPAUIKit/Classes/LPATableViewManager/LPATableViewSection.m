@@ -24,35 +24,29 @@ CGFloat const LPATableViewSectionFooterHeightAutomatic = DBL_MAX;
 
 #pragma mark - Class Methods
 
-+ (instancetype)section
-{
++ (instancetype)section {
     return [[self alloc] init];
 }
 
-+ (instancetype)sectionWithHeaderTitle:(NSString *)headerTitle
-{
++ (instancetype)sectionWithHeaderTitle:(NSString *)headerTitle {
     return [[self alloc] initWithTitle:headerTitle];
 }
 
-+ (instancetype)sectionWithHeaderTitle:(NSString *)headerTitle footerTitle:(NSString *)footerTitle
-{
++ (instancetype)sectionWithHeaderTitle:(NSString *)headerTitle footerTitle:(NSString *)footerTitle {
     return [[self alloc] initWithHeaderTitle:headerTitle footerTitle:footerTitle];
 }
 
-+ (instancetype)sectionWithHeaderView:(UIView *)headerView
-{
++ (instancetype)sectionWithHeaderView:(UIView *)headerView {
     return [[self alloc] initWithHeaderView:headerView];
 }
 
-+ (instancetype)sectionWithHeaderView:(UIView *)headerView footerView:(UIView *)footerView
-{
++ (instancetype)sectionWithHeaderView:(UIView *)headerView footerView:(UIView *)footerView {
     return [[self alloc] initWithHeaderView:headerView footerView:footerView];
 }
 
 #pragma mark - Life Cycle
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         _mutableItems = [NSMutableArray array];
@@ -63,8 +57,7 @@ CGFloat const LPATableViewSectionFooterHeightAutomatic = DBL_MAX;
     return self;
 }
 
-- (instancetype)initWithHeaderTitle:(NSString *)headerTitle
-{
+- (instancetype)initWithHeaderTitle:(NSString *)headerTitle {
     self = [self init];
     if (self) {
         _headerTitle = headerTitle;
@@ -72,8 +65,7 @@ CGFloat const LPATableViewSectionFooterHeightAutomatic = DBL_MAX;
     return self;
 }
 
-- (instancetype)initWithHeaderTitle:(NSString *)headerTitle footerTitle:(NSString *)footerTitle
-{
+- (instancetype)initWithHeaderTitle:(NSString *)headerTitle footerTitle:(NSString *)footerTitle {
     self = [self initWithHeaderTitle:headerTitle];
     if (self) {
         _footerTitle = footerTitle;
@@ -81,8 +73,7 @@ CGFloat const LPATableViewSectionFooterHeightAutomatic = DBL_MAX;
     return self;
 }
 
-- (instancetype)initWithHeaderView:(UIView *)headerView
-{
+- (instancetype)initWithHeaderView:(UIView *)headerView {
     self = [self init];
     if (self) {
         _headerView = headerView;
@@ -90,8 +81,7 @@ CGFloat const LPATableViewSectionFooterHeightAutomatic = DBL_MAX;
     return self;
 }
 
-- (instancetype)initWithHeaderView:(UIView *)headerView footerView:(UIView *)footerView
-{
+- (instancetype)initWithHeaderView:(UIView *)headerView footerView:(UIView *)footerView {
     self = [self initWithHeaderView:headerView];
     if (self) {
         _footerView = footerView;
@@ -101,44 +91,38 @@ CGFloat const LPATableViewSectionFooterHeightAutomatic = DBL_MAX;
 
 #pragma mark - Reading Information
 
-- (NSUInteger)index
-{
+- (NSUInteger)index {
     LPATableViewManager *tableViewManager = self.tableViewManager;
     return [tableViewManager.sections indexOfObject:self];
 }
 
 #pragma mark - Managing Items
 
-- (NSArray *)items
-{
+- (NSArray *)items {
     return _mutableItems;
 }
 
-- (void)addItem:(id)item
-{
+- (void)addItem:(id)item {
     if ([item isKindOfClass:[LPATableViewItem class]]) {
         ((LPATableViewItem *)item).section = self;
     }
     [_mutableItems addObject:item];
 }
 
-- (void)addItemsFromArray:(NSArray *)array
-{
+- (void)addItemsFromArray:(NSArray *)array {
     [array enumerateObjectsUsingBlock:^(id item, NSUInteger idx, BOOL *stop){
         [self addItem:item];
     }];
 }
 
-- (void)insertItem:(id)item atIndex:(NSUInteger)index
-{
+- (void)insertItem:(id)item atIndex:(NSUInteger)index {
     if ([item isKindOfClass:[LPATableViewItem class]]) {
         ((LPATableViewItem *)item).section = self;
     }
     [_mutableItems insertObject:item atIndex:index];
 }
 
-- (void)insertItems:(NSArray *)items atIndexes:(NSIndexSet *)indexes
-{
+- (void)insertItems:(NSArray *)items atIndexes:(NSIndexSet *)indexes {
     [items enumerateObjectsUsingBlock:^(id item, NSUInteger idx, BOOL *stop){
         if ([item isKindOfClass:[LPATableViewItem class]]) {
             ((LPATableViewItem *)item).section = self;
@@ -147,72 +131,59 @@ CGFloat const LPATableViewSectionFooterHeightAutomatic = DBL_MAX;
     [_mutableItems insertObjects:items atIndexes:indexes];
 }
 
-- (void)removeItem:(id)item inRange:(NSRange)range
-{
+- (void)removeItem:(id)item inRange:(NSRange)range {
     [_mutableItems removeObject:item inRange:range];
 }
 
-- (void)removeLastItem
-{
+- (void)removeLastItem {
     [_mutableItems removeLastObject];
 }
 
-- (void)removeItemAtIndex:(NSUInteger)index
-{
+- (void)removeItemAtIndex:(NSUInteger)index {
     [_mutableItems removeObjectAtIndex:index];
 }
 
-- (void)removeItem:(id)item
-{
+- (void)removeItem:(id)item {
     [_mutableItems removeObject:item];
 }
 
-- (void)removeAllItems
-{
+- (void)removeAllItems {
     [_mutableItems removeAllObjects];
 }
 
-- (void)removeItemIdenticalTo:(id)item inRange:(NSRange)range
-{
+- (void)removeItemIdenticalTo:(id)item inRange:(NSRange)range {
     [_mutableItems removeObjectIdenticalTo:item inRange:range];
 }
 
-- (void)removeItemIdenticalTo:(id)item
-{
+- (void)removeItemIdenticalTo:(id)item {
     [_mutableItems removeObjectIdenticalTo:item];
 }
 
-- (void)removeItemsInArray:(NSArray *)otherArray
-{
+- (void)removeItemsInArray:(NSArray *)otherArray {
     [_mutableItems removeObjectsInArray:otherArray];
 }
 
-- (void)removeItemsInRange:(NSRange)range
-{
+- (void)removeItemsInRange:(NSRange)range {
     [_mutableItems removeObjectsInRange:range];
 }
 
-- (void)removeItemsAtIndexes:(NSIndexSet *)indexes
-{
+- (void)removeItemsAtIndexes:(NSIndexSet *)indexes {
     [_mutableItems removeObjectsAtIndexes:indexes];
 }
 
-- (void)replaceItemAtIndex:(NSUInteger)index withItem:(id)item
-{
+- (void)replaceItemAtIndex:(NSUInteger)index withItem:(id)item {
     if ([item isKindOfClass:[LPATableViewItem class]]){
         ((LPATableViewItem *)item).section = self;
     }
     [_mutableItems replaceObjectAtIndex:index withObject:item];
 }
 
-- (void)replaceItemsWithItemsFromArray:(NSArray *)otherArray
-{
+- (void)replaceItemsWithItemsFromArray:(NSArray *)otherArray {
     [self removeAllItems];
     [self addItemsFromArray:otherArray];
 }
 
-- (void)replaceItemsInRange:(NSRange)range withItemsFromArray:(NSArray *)otherArray range:(NSRange)otherRange
-{
+- (void)replaceItemsInRange:(NSRange)range withItemsFromArray:(NSArray *)otherArray range:(NSRange)otherRange {
     [otherArray enumerateObjectsUsingBlock:^(id item, NSUInteger idx, BOOL *stop){
         if ([item isKindOfClass:[LPATableViewItem class]]) {
             ((LPATableViewItem *)item).section = self;
@@ -221,8 +192,7 @@ CGFloat const LPATableViewSectionFooterHeightAutomatic = DBL_MAX;
     [_mutableItems replaceObjectsInRange:range withObjectsFromArray:otherArray range:otherRange];
 }
 
-- (void)replaceItemsInRange:(NSRange)range withItemsFromArray:(NSArray *)otherArray
-{
+- (void)replaceItemsInRange:(NSRange)range withItemsFromArray:(NSArray *)otherArray {
     [otherArray enumerateObjectsUsingBlock:^(id item, NSUInteger idx, BOOL *stop){
         if ([item isKindOfClass:[LPATableViewItem class]]) {
             ((LPATableViewItem *)item).section = self;
@@ -231,8 +201,7 @@ CGFloat const LPATableViewSectionFooterHeightAutomatic = DBL_MAX;
     [_mutableItems replaceObjectsInRange:range withObjectsFromArray:otherArray];
 }
 
-- (void)replaceItemsAtIndexes:(NSIndexSet *)indexes withItems:(NSArray *)items
-{
+- (void)replaceItemsAtIndexes:(NSIndexSet *)indexes withItems:(NSArray *)items {
     [items enumerateObjectsUsingBlock:^(id item, NSUInteger idx, BOOL *stop){
         if ([item isKindOfClass:[LPATableViewItem class]]) {
             ((LPATableViewItem *)item).section = self;
@@ -241,32 +210,27 @@ CGFloat const LPATableViewSectionFooterHeightAutomatic = DBL_MAX;
     [_mutableItems replaceObjectsAtIndexes:indexes withObjects:items];
 }
 
-- (void)exchangeItemAtIndex:(NSUInteger)idx1 withItemAtIndex:(NSUInteger)idx2
-{
+- (void)exchangeItemAtIndex:(NSUInteger)idx1 withItemAtIndex:(NSUInteger)idx2 {
     [self.mutableItems exchangeObjectAtIndex:idx1 withObjectAtIndex:idx2];
 }
 
-- (void)sortItemsUsingFunction:(NSInteger (*)(id, id, void *))compare context:(void *)context
-{
+- (void)sortItemsUsingFunction:(NSInteger (*)(id, id, void *))compare context:(void *)context {
     [_mutableItems sortUsingFunction:compare context:context];
 }
 
-- (void)sortItemsUsingSelector:(SEL)comparator
-{
+- (void)sortItemsUsingSelector:(SEL)comparator {
     [_mutableItems sortUsingSelector:comparator];
 }
 
 #pragma mark - Manipulating table view section
 
-- (void)reloadSectionWithAnimation:(UITableViewRowAnimation)animation
-{
+- (void)reloadSectionWithAnimation:(UITableViewRowAnimation)animation {
     [_tableViewManager.tableView reloadSections:[NSIndexSet indexSetWithIndex:self.index] withRowAnimation:animation];
 }
 
 #pragma mark - Checking for errors
 
-- (NSArray *)errors
-{
+- (NSArray *)errors {
     __block NSMutableArray *errors = [NSMutableArray array];
     [_mutableItems enumerateObjectsUsingBlock:^(LPATableViewItem *item, NSUInteger idx, BOOL *stop){
         if ([item respondsToSelector:@selector(error)]) {

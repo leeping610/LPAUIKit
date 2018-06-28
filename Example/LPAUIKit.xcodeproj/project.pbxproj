@@ -223,7 +223,6 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				5B8F9417B4878380277C5C3C /* [CP] Embed Pods Frameworks */,
-				DA578EBFF363EE29A5E08F0D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -243,7 +242,6 @@
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
 				2A64319AA5E1F1BDF9FC9E1B /* [CP] Embed Pods Frameworks */,
-				CCA58CD65E2B34698015A3FF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -399,41 +397,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LPAUIKit_Example/Pods-LPAUIKit_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CCA58CD65E2B34698015A3FF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LPAUIKit_Tests/Pods-LPAUIKit_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DA578EBFF363EE29A5E08F0D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-LPAUIKit_Example/Pods-LPAUIKit_Example-resources.sh",
-				"${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/LPAUIKit/LPAUIKit.bundle",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LPAUIKit_Example/Pods-LPAUIKit_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

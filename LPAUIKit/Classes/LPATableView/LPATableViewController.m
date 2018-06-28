@@ -21,16 +21,14 @@
 
 #pragma mark - Life Cycle
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     // Set from xib
     self.fromNib = YES;
     self.tableDatas = [NSMutableArray array];
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         _tableDatas = [NSMutableArray array];
@@ -38,8 +36,7 @@
     return self;
 }
 
-- (instancetype)initWithRefreshType:(LPATableViewRefreshType)refreshType
-{
+- (instancetype)initWithRefreshType:(LPATableViewRefreshType)refreshType {
     self = [self init];
     if (self) {
         _refreshType = refreshType;
@@ -47,8 +44,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     if (!self.isFromNib || _tableView == nil) {
@@ -70,40 +66,34 @@
     _tableView.refreshType = _refreshType;
 }
 
-- (void)registerCell:(Class)cellClass reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (void)registerCell:(Class)cellClass reuseIdentifier:(NSString *)reuseIdentifier {
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(cellClass)
                                                bundle:nil]
          forCellReuseIdentifier:reuseIdentifier];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Event Response
 
-- (void)reloadTableViewDatas
-{
+- (void)reloadTableViewDatas {
     [self.tableView reloadData];
 }
 
 #pragma mark - UITableView DataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _tableDatas.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"cellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
@@ -115,15 +105,13 @@
 
 #pragma mark - UITableView Delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Custom Accessors
 
-- (LPATableView *)tableView
-{
+- (LPATableView *)tableView {
     if (!_tableView) {
         _tableView = [[LPATableView alloc] initWithFrame:self.view.bounds
                                                    style:UITableViewStylePlain
@@ -135,8 +123,7 @@
     return _tableView;
 }
 
-- (void)setRefreshType:(LPATableViewRefreshType)refreshType
-{
+- (void)setRefreshType:(LPATableViewRefreshType)refreshType {
     _refreshType = refreshType;
     _tableView.refreshType = _refreshType;
 }

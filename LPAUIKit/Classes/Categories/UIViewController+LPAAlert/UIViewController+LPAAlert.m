@@ -14,8 +14,7 @@ static void *LPAControllerAlertSignalKey = "LPAControllerAlertSignalKey";
 
 #pragma mark - Class Methods
 
-+ (void)load
-{
++ (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         dispatch_semaphore_t signal = dispatch_semaphore_create(1);
@@ -27,8 +26,7 @@ static void *LPAControllerAlertSignalKey = "LPAControllerAlertSignalKey";
 
 - (void)lpa_alertWithTitle:(NSString *)title
                    message:(NSString *)message
-                    action:(NSArray<UIAlertAction *> *)alertActions
-{
+                    action:(NSArray<UIAlertAction *> *)alertActions {
     UIAlertController *alertController = [[self class] normalAlerControllerWithTitle:title message:message];
     [alertActions enumerateObjectsUsingBlock:^(UIAlertAction *alertAction, NSUInteger idx, BOOL *stop){
         [alertController addAction:alertAction];
@@ -38,8 +36,7 @@ static void *LPAControllerAlertSignalKey = "LPAControllerAlertSignalKey";
 
 - (void)lpa_actionSheetWithTitle:(NSString *)title
                          message:(NSString *)message
-                         actions:(NSArray<UIAlertAction *> *)alertActions
-{
+                         actions:(NSArray<UIAlertAction *> *)alertActions {
     UIAlertController *actionSheetController = [[self class] normalActionSheetControllerWithTitle:title message:message];
     [alertActions enumerateObjectsUsingBlock:^(UIAlertAction *alertAction, NSUInteger idx, BOOL *stop){
         [actionSheetController addAction:alertAction];
@@ -49,24 +46,21 @@ static void *LPAControllerAlertSignalKey = "LPAControllerAlertSignalKey";
 
 #pragma mark - Private Methods
 
-+ (UIAlertController *)normalAlerControllerWithTitle:(NSString *)title message:(NSString *)message
-{
++ (UIAlertController *)normalAlerControllerWithTitle:(NSString *)title message:(NSString *)message {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
                                                                              message:message
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     return alertController;
 }
 
-+ (UIAlertController *)normalActionSheetControllerWithTitle:(NSString *)title message:(NSString *)message
-{
++ (UIAlertController *)normalActionSheetControllerWithTitle:(NSString *)title message:(NSString *)message {
     UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:title
                                                                                    message:message
                                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     return actionSheetController;
 }
 
-+ (void)presentAlertController:(UIAlertController *)alertController
-{
++ (void)presentAlertController:(UIAlertController *)alertController {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_semaphore_t signal = objc_getAssociatedObject(self, LPAControllerAlertSignalKey);
         dispatch_time_t overtime = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);

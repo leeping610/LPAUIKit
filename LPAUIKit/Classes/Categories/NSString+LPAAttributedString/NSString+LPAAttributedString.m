@@ -10,8 +10,7 @@
 @implementation NSString (LPAAttributedString)
 
 - (NSAttributedString *)lpa_attributeStringWithSubString:(NSString *)subString
-                                                   color:(UIColor *)color
-{
+                                                   color:(UIColor *)color {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
     NSRange subStringRange = [self rangeOfString:subString];
     [attributedString setAttributes:@{NSForegroundColorAttributeName: color}
@@ -20,8 +19,7 @@
 }
 
 - (NSAttributedString *)lpa_attributeStringWithSubStrings:(NSArray<NSString *> *)subStrings
-                                                   colors:(NSArray<UIColor *> *)colors
-{
+                                                   colors:(NSArray<UIColor *> *)colors {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
     [subStrings enumerateObjectsUsingBlock:^(NSString *subString, NSUInteger idx, BOOL *stop){
         NSRange subStringRange = [self rangeOfString:subString];
@@ -32,8 +30,7 @@
 }
 
 - (NSAttributedString *)lpa_attributeStringWithSubString:(NSString *)subString
-                                     attributeDictionary:(NSDictionary *)attributeDictionary
-{
+                                     attributeDictionary:(NSDictionary *)attributeDictionary {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
     NSRange subStringRange = [self rangeOfString:subString];
     [attributedString setAttributes:attributeDictionary range:subStringRange];
@@ -41,8 +38,7 @@
 }
 
 - (NSAttributedString *)lpa_attributeStringWithSubStrings:(NSArray<NSString *> *)subStrings
-                                     attributeDictionarys:(NSArray<NSDictionary *> *)attributeDictionarys
-{
+                                     attributeDictionarys:(NSArray<NSDictionary *> *)attributeDictionarys {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
     [subStrings enumerateObjectsUsingBlock:^(NSString *subString, NSUInteger idx, BOOL *stop){
         NSRange subStringRange = [self rangeOfString:subString];

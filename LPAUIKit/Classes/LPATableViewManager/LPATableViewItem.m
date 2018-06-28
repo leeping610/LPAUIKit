@@ -23,20 +23,17 @@ NSString *const LPATableViewItemErrorDescription = @"RFPTableViewErrorDescriptio
 
 #pragma mark - Class Methods
 
-+ (instancetype)item
-{
++ (instancetype)item {
     return [[self alloc] init];
 }
 
-+ (instancetype)itemWithTitle:(NSString *)title
-{
++ (instancetype)itemWithTitle:(NSString *)title {
     return [[self alloc] initWithTitle:title];
 }
 
 #pragma mark - Life Cycle
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         _enable = YES;
@@ -46,8 +43,7 @@ NSString *const LPATableViewItemErrorDescription = @"RFPTableViewErrorDescriptio
     return self;
 }
 
-- (instancetype)initWithTitle:(NSString *)title
-{
+- (instancetype)initWithTitle:(NSString *)title {
     self = [self init];
     if (self) {
         _title = title;
@@ -55,13 +51,11 @@ NSString *const LPATableViewItemErrorDescription = @"RFPTableViewErrorDescriptio
     return self;
 }
 
-- (void)reloadRowWithAnimation:(UITableViewRowAnimation)animation
-{
+- (void)reloadRowWithAnimation:(UITableViewRowAnimation)animation {
     [self.section.tableViewManager.tableView reloadRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
 }
 
-- (void)deleteRowWithAnimation:(UITableViewRowAnimation)animation
-{
+- (void)deleteRowWithAnimation:(UITableViewRowAnimation)animation {
     LPATableViewSection *section = self.section;
     NSInteger row = self.indexPath.row;
     [section removeItemAtIndex:self.indexPath.row];
@@ -70,8 +64,7 @@ NSString *const LPATableViewItemErrorDescription = @"RFPTableViewErrorDescriptio
 
 #pragma mark - Custom Accessors
 
-- (NSIndexPath *)indexPath
-{
+- (NSIndexPath *)indexPath {
     return [NSIndexPath indexPathForRow:[self.section.items indexOfObject:self] inSection:self.section.index];
 }
 

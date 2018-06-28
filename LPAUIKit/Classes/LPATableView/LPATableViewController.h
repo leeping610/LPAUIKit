@@ -5,12 +5,12 @@
 //  Created by 平果太郎 on 2017/10/11.
 //
 
-#import "LPAViewController.h"
+#import <UIKit/UIKit.h>
 #import "LPATableView.h"
 
-@interface LPATableViewController : LPAViewController <UITableViewDelegate,
-                                                       UITableViewDataSource,
-                                                       LPATableViewDelegate>
+@interface LPATableViewController : UIViewController <UITableViewDelegate,
+                                                      UITableViewDataSource,
+                                                      LPATableViewDelegate>
 
 @property (nonatomic, strong, readonly) IBOutlet LPATableView *tableView;
 @property (nonatomic, assign) IBInspectable LPATableViewRefreshType refreshType;

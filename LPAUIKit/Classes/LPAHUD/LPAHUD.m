@@ -27,61 +27,51 @@ static const void *LPAHUDAnimationKey = &LPAHUDAnimationKey;
 
 #pragma mark - Initial
 
-+ (void)setBackgroundStyle:(LPAToastHUDBackgroundStyle)backgroundStyle
-{
++ (void)setBackgroundStyle:(LPAToastHUDBackgroundStyle)backgroundStyle {
     [UIView lpa_setToastHUDBackgroundStyle:backgroundStyle];
 }
 
-+ (void)setAnimation:(LPAToastHUDAnimation)animation
-{
++ (void)setAnimation:(LPAToastHUDAnimation)animation {
     [UIView lpa_setToastHUDAnimation:animation];
 }
 
 #pragma mark - Show (Normal)
 
-+ (void)show
-{
++ (void)show {
     [LPAHUDKeyWindow lpa_startLoading];
 }
 
-+ (void)disableShow
-{
++ (void)disableShow {
     [LPAHUDKeyWindow lpa_startDisableLoading];
 }
 
 #pragma mark - Show (Status)
 
-+ (void)showWithStatus:(NSString *)status
-{
++ (void)showWithStatus:(NSString *)status {
     [LPAHUDKeyWindow lpa_showText:status];
 }
 
-+ (void)showWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block
-{
++ (void)showWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block {
     [LPAHUDKeyWindow lpa_showText:status delayBlock:block];
 }
 
-+ (void)disableShowWithStatus:(NSString *)status
-{
++ (void)disableShowWithStatus:(NSString *)status {
     [LPAHUDKeyWindow lpa_disableShowText:status];;
 }
 
-+ (void)disableShowWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block
-{
++ (void)disableShowWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block {
     [LPAHUDKeyWindow lpa_disableShowText:status delayBlock:block];
 }
 
 #pragma mark - Progress
 
-+ (void)showProgress:(CGFloat)progress
-{
++ (void)showProgress:(CGFloat)progress {
     [LPAHUDKeyWindow lpa_startLoadingWithProgress:^(LPAToastHUDProgressBlock block){
         block(progress);
     }];
 }
 
-+ (void)disableShowProgress:(CGFloat)progress
-{
++ (void)disableShowProgress:(CGFloat)progress {
     [LPAHUDKeyWindow lpa_startDisableLoadingWithProgress:^(LPAToastHUDProgressBlock block){
         block(progress);
     }];
@@ -89,16 +79,14 @@ static const void *LPAHUDAnimationKey = &LPAHUDAnimationKey;
 
 #pragma mark - Progress (Status)
 
-+ (void)showProgress:(CGFloat)progress status:(NSString *)status
-{
++ (void)showProgress:(CGFloat)progress status:(NSString *)status {
     [LPAHUDKeyWindow lpa_startLoadingWithText:status
                                 progressBlock:^(LPAToastHUDProgressBlock block){
                                     block(progress);
                                 }];
 }
 
-+ (void)disableShowProgress:(CGFloat)progress status:(NSString *)status
-{
++ (void)disableShowProgress:(CGFloat)progress status:(NSString *)status {
     [LPAHUDKeyWindow lpa_startDisableLoadingWithText:status
                                        progressBlock:^(LPAToastHUDProgressBlock block){
                                            block(progress);
@@ -107,113 +95,95 @@ static const void *LPAHUDAnimationKey = &LPAHUDAnimationKey;
 
 #pragma mark - Info
 
-+ (void)showInfoWithStatus:(NSString *)status
-{
++ (void)showInfoWithStatus:(NSString *)status {
     UIImage *infoImage = LPAUIKitImageResource(@"info");
     [LPAHUDKeyWindow lpa_showImage:infoImage withText:status];
 }
 
-+ (void)showInfoWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block
-{
++ (void)showInfoWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block {
     UIImage *infoImage = LPAUIKitImageResource(@"info");
     [LPAHUDKeyWindow lpa_showImage:infoImage withText:status delayBlock:block];
 }
 
-+ (void)disableShowInfoWithStatus:(NSString *)status
-{
++ (void)disableShowInfoWithStatus:(NSString *)status {
     UIImage *infoImage = LPAUIKitImageResource(@"info");
     [LPAHUDKeyWindow lpa_disableShowImage:infoImage withText:status];
 }
 
-+ (void)disableShowInfoWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block
-{
++ (void)disableShowInfoWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block {
     UIImage *infoImage = LPAUIKitImageResource(@"info");
     [LPAHUDKeyWindow lpa_disableShowImage:infoImage withText:status delayBlock:block];
 }
 
 #pragma mark - Success
 
-+ (void)showSuccessWithStatus:(NSString *)status
-{
++ (void)showSuccessWithStatus:(NSString *)status {
     UIImage *successImage = LPAUIKitImageResource(@"success");
     [LPAHUDKeyWindow lpa_showImage:successImage withText:status];
 }
 
-+ (void)showSuccessWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block
-{
++ (void)showSuccessWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block {
     UIImage *successImage = LPAUIKitImageResource(@"success");
     [LPAHUDKeyWindow lpa_showImage:successImage withText:status delayBlock:block];
 }
 
-+ (void)disableShowSuccessWithStatus:(NSString *)status
-{
++ (void)disableShowSuccessWithStatus:(NSString *)status {
     UIImage *successImage = LPAUIKitImageResource(@"success");
     [LPAHUDKeyWindow lpa_disableShowImage:successImage withText:status];
 }
 
-+ (void)disableShowSuccessWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block
-{
++ (void)disableShowSuccessWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block {
     UIImage *successImage = LPAUIKitImageResource(@"success");
     [LPAHUDKeyWindow lpa_disableShowImage:successImage withText:status delayBlock:block];
 }
 
 #pragma mark - Error
 
-+ (void)showErrorWithStatus:(NSString *)status
-{
++ (void)showErrorWithStatus:(NSString *)status {
     UIImage *errorImage = LPAUIKitImageResource(@"error");
     [LPAHUDKeyWindow lpa_showImage:errorImage withText:status];
 }
 
-+ (void)showErrorWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block
-{
++ (void)showErrorWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block {
     UIImage *errorImage = LPAUIKitImageResource(@"error");
     [LPAHUDKeyWindow lpa_showImage:errorImage withText:status delayBlock:block];
 }
 
-+ (void)disableShowErrorWithStatus:(NSString *)status
-{
++ (void)disableShowErrorWithStatus:(NSString *)status {
     UIImage *errorImage = LPAUIKitImageResource(@"error");
     [LPAHUDKeyWindow lpa_disableShowImage:errorImage withText:status];
 }
 
-+ (void)disableShowErrorWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block
-{
++ (void)disableShowErrorWithStatus:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block {
     UIImage *errorImage = LPAUIKitImageResource(@"error");
     [LPAHUDKeyWindow lpa_disableShowImage:errorImage withText:status delayBlock:block];
 }
 
 #pragma mark - Image
 
-+ (void)showImage:(UIImage *)image status:(NSString *)status
-{
++ (void)showImage:(UIImage *)image status:(NSString *)status {
     [LPAHUDKeyWindow lpa_showImage:image withText:status];
 }
 
-+ (void)showImage:(UIImage *)image status:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block
-{
++ (void)showImage:(UIImage *)image status:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block {
     [LPAHUDKeyWindow lpa_showImage:image withText:status delayBlock:block];
 }
 
-+ (void)disableShowImage:(UIImage *)image status:(NSString *)status
-{
++ (void)disableShowImage:(UIImage *)image status:(NSString *)status {
     [LPAHUDKeyWindow lpa_disableShowImage:image withText:status];
 }
 
-+ (void)disableShowImage:(UIImage *)image status:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block
-{
++ (void)disableShowImage:(UIImage *)image status:(NSString *)status delayBlock:(LPAHUDCompleteBlock)block {
     [LPAHUDKeyWindow lpa_disableShowImage:image withText:status delayBlock:block];
 }
 
 #pragma mark - pop & dismiss
 
-+ (void)popActivity
-{
++ (void)popActivity {
     [LPAHUDKeyWindow lpa_endLoading];
 }
 
-+ (void)dismiss
-{
++ (void)dismiss {
     [LPAHUDKeyWindow lpa_endLoading];
 }
 

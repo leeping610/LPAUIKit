@@ -20,31 +20,27 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
 
 #pragma mark - Toast Methods
 
-- (void)lpa_startLoading
-{
+- (void)lpa_startLoading {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeIndeterminate;
     [progressHUD showAnimated:YES];
 }
 
-- (void)lpa_startDisableLoading
-{
+- (void)lpa_startDisableLoading {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeIndeterminate;
     progressHUD.userInteractionEnabled = YES;
     [progressHUD showAnimated:YES];
 }
 
-- (void)lpa_startLoadingWithText:(NSString *)loadingText
-{
+- (void)lpa_startLoadingWithText:(NSString *)loadingText {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeIndeterminate;
     progressHUD.label.text = loadingText;
     [progressHUD showAnimated:YES];
 }
 
-- (void)lpa_startDisableLoadingWithText:(NSString *)loadingText
-{
+- (void)lpa_startDisableLoadingWithText:(NSString *)loadingText {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeIndeterminate;
     progressHUD.label.text = loadingText;
@@ -52,26 +48,22 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
     [progressHUD showAnimated:YES];
 }
 
-- (void)lpa_endLoading
-{
+- (void)lpa_endLoading {
     MBProgressHUD *progressHUD = [MBProgressHUD HUDForView:self];
     [progressHUD hideAnimated:YES];
 }
 
-- (void)lpa_endLoadingWithSuccess:(NSString *)successText
-{
+- (void)lpa_endLoadingWithSuccess:(NSString *)successText {
     [self lpa_endLoading];
     [self lpa_showText:successText];
 }
 
-- (void)lpa_endLoadingWithFailure:(NSString *)failureText
-{
+- (void)lpa_endLoadingWithFailure:(NSString *)failureText {
     [self lpa_endLoading];
     [self lpa_showText:failureText];
 }
 
-- (void)lpa_startLoadingWithProgress:(void (^)(LPAToastHUDProgressBlock))progressBlock
-{
+- (void)lpa_startLoadingWithProgress:(void (^)(LPAToastHUDProgressBlock))progressBlock {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeDeterminate;
     LPAToastHUDProgressBlock block = ^(CGFloat progress){
@@ -83,8 +75,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
     [progressHUD showAnimated:YES];
 }
 
-- (void)lpa_startDisableLoadingWithProgress:(void (^)(LPAToastHUDProgressBlock))progressBlock
-{
+- (void)lpa_startDisableLoadingWithProgress:(void (^)(LPAToastHUDProgressBlock))progressBlock {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeDeterminate;
     progressHUD.userInteractionEnabled = YES;
@@ -98,8 +89,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
 }
 
 - (void)lpa_startLoadingWithText:(NSString *)loadingText
-                   progressBlock:(void (^)(LPAToastHUDProgressBlock))progressBlock
-{
+                   progressBlock:(void (^)(LPAToastHUDProgressBlock))progressBlock {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeDeterminate;
     progressHUD.label.text = loadingText;
@@ -113,8 +103,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
 }
 
 - (void)lpa_startDisableLoadingWithText:(NSString *)loadingText
-                          progressBlock:(void (^)(LPAToastHUDProgressBlock))progressBlock
-{
+                          progressBlock:(void (^)(LPAToastHUDProgressBlock))progressBlock {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeDeterminate;
     progressHUD.label.text = loadingText;
@@ -128,8 +117,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
     [progressHUD showAnimated:YES];
 }
 
-- (void)lpa_showText:(NSString *)text
-{
+- (void)lpa_showText:(NSString *)text {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeText;
     progressHUD.detailsLabel.text = text;
@@ -139,8 +127,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:[self autoHideTimeInterval]];
 }
 
-- (void)lpa_disableShowText:(NSString *)text
-{
+- (void)lpa_disableShowText:(NSString *)text {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeText;
     progressHUD.detailsLabel.text = text;
@@ -151,8 +138,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:[self autoHideTimeInterval]];
 }
 
-- (void)lpa_showText:(NSString *)text delayBlock:(void (^)(void))delayBlock
-{
+- (void)lpa_showText:(NSString *)text delayBlock:(void (^)(void))delayBlock {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeText;
     progressHUD.detailsLabel.text = text;
@@ -167,8 +153,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:[self autoHideTimeInterval]];
 }
 
-- (void)lpa_disableShowText:(NSString *)text delayBlock:(void (^)(void))delayBlock
-{
+- (void)lpa_disableShowText:(NSString *)text delayBlock:(void (^)(void))delayBlock {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeText;
     progressHUD.detailsLabel.text = text;
@@ -184,8 +169,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:[self autoHideTimeInterval]];
 }
 
-- (void)lpa_showText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds
-{
+- (void)lpa_showText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeText;
     progressHUD.detailsLabel.text = text;
@@ -195,8 +179,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:seconds];
 }
 
-- (void)lpa_disableShowText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds
-{
+- (void)lpa_disableShowText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeText;
     progressHUD.detailsLabel.text = text;
@@ -207,8 +190,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:seconds];
 }
 
-- (void)lpa_showText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds delayBlock:(void (^)(void))delayBlock
-{
+- (void)lpa_showText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds delayBlock:(void (^)(void))delayBlock {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeText;
     progressHUD.detailsLabel.text = text;
@@ -223,8 +205,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:seconds];
 }
 
-- (void)lpa_disableShowText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds delayBlock:(void (^)(void))delayBlock
-{
+- (void)lpa_disableShowText:(NSString *)text waitForSeconds:(NSTimeInterval)seconds delayBlock:(void (^)(void))delayBlock {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeText;
     progressHUD.detailsLabel.text = text;
@@ -240,8 +221,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:seconds];
 }
 
-- (void)lpa_showImage:(UIImage *)image
-{
+- (void)lpa_showImage:(UIImage *)image {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeCustomView;
     progressHUD.customView = [[UIImageView alloc] initWithImage:image];
@@ -250,8 +230,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:[self autoHideTimeInterval]];
 }
 
-- (void)lpa_disableShowImage:(UIImage *)image
-{
+- (void)lpa_disableShowImage:(UIImage *)image {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeCustomView;
     progressHUD.customView = [[UIImageView alloc] initWithImage:image];
@@ -261,8 +240,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:[self autoHideTimeInterval]];
 }
 
-- (void)lpa_showImage:(UIImage *)image delayBlock:(void (^)(void))delayBlock
-{
+- (void)lpa_showImage:(UIImage *)image delayBlock:(void (^)(void))delayBlock {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeCustomView;
     progressHUD.customView = [[UIImageView alloc] initWithImage:image];
@@ -276,8 +254,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:[self autoHideTimeInterval]];
 }
 
-- (void)lpa_disableShowImage:(UIImage *)image delayBlock:(void (^)(void))delayBlock
-{
+- (void)lpa_disableShowImage:(UIImage *)image delayBlock:(void (^)(void))delayBlock {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeCustomView;
     progressHUD.customView = [[UIImageView alloc] initWithImage:image];
@@ -292,8 +269,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:[self autoHideTimeInterval]];
 }
 
-- (void)lpa_showImage:(UIImage *)image withText:(NSString *)text
-{
+- (void)lpa_showImage:(UIImage *)image withText:(NSString *)text {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeCustomView;
     progressHUD.customView = [[UIImageView alloc] initWithImage:image];
@@ -303,8 +279,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:[self autoHideTimeInterval]];
 }
 
-- (void)lpa_disableShowImage:(UIImage *)image withText:(NSString *)text
-{
+- (void)lpa_disableShowImage:(UIImage *)image withText:(NSString *)text {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeCustomView;
     progressHUD.customView = [[UIImageView alloc] initWithImage:image];
@@ -315,8 +290,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:[self autoHideTimeInterval]];
 }
 
-- (void)lpa_showImage:(UIImage *)image withText:(NSString *)text delayBlock:(void (^)(void))delayBlock
-{
+- (void)lpa_showImage:(UIImage *)image withText:(NSString *)text delayBlock:(void (^)(void))delayBlock {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeCustomView;
     progressHUD.customView = [[UIImageView alloc] initWithImage:image];
@@ -331,8 +305,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
                    afterDelay:[self autoHideTimeInterval]];
 }
 
-- (void)lpa_disableShowImage:(UIImage *)image withText:(NSString *)text delayBlock:(void (^)(void))delayBlock
-{
+- (void)lpa_disableShowImage:(UIImage *)image withText:(NSString *)text delayBlock:(void (^)(void))delayBlock {
     MBProgressHUD *progressHUD = [self defaultProgressHUD];
     progressHUD.mode = MBProgressHUDModeCustomView;
     progressHUD.customView = [[UIImageView alloc] initWithImage:image];
@@ -350,25 +323,21 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
 
 #pragma mark - Config Class Methods
 
-+ (void)lpa_setAutoHideTimeInterval:(NSTimeInterval)timeInterval
-{
++ (void)lpa_setAutoHideTimeInterval:(NSTimeInterval)timeInterval {
     objc_setAssociatedObject([self class], LPAToastHUDAutoHideTimeIntervalKey, @(timeInterval), OBJC_ASSOCIATION_ASSIGN);
 }
 
-+ (void)lpa_setToastHUDBackgroundStyle:(LPAToastHUDBackgroundStyle)style
-{
++ (void)lpa_setToastHUDBackgroundStyle:(LPAToastHUDBackgroundStyle)style {
     objc_setAssociatedObject([self class], LPAToastHUDBackgroundStyleKey, @(style), OBJC_ASSOCIATION_ASSIGN);
 }
 
-+ (void)lpa_setToastHUDAnimation:(LPAToastHUDAnimation)animationType
-{
++ (void)lpa_setToastHUDAnimation:(LPAToastHUDAnimation)animationType {
     objc_setAssociatedObject([self class], LPAToastHUDAnimationKey, @(animationType), OBJC_ASSOCIATION_ASSIGN);
 }
 
 #pragma mark - Private Methods
 
-- (MBProgressHUD *)defaultProgressHUD
-{
+- (MBProgressHUD *)defaultProgressHUD {
     [self lpa_endLoading];
     MBProgressHUD *progressHUD = [[MBProgressHUD alloc] initWithView:self];
     progressHUD.backgroundView.style = (MBProgressHUDBackgroundStyle)[self toastHUDBackgroundStyle];
@@ -379,8 +348,7 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
     return progressHUD;
 }
 
-- (NSTimeInterval)autoHideTimeInterval
-{
+- (NSTimeInterval)autoHideTimeInterval {
     NSTimeInterval timeInterval = [objc_getAssociatedObject([self class], LPAToastHUDAutoHideTimeIntervalKey) floatValue];
     if (!timeInterval) {
         timeInterval = 3;
@@ -388,14 +356,12 @@ static CGFloat const LPAToastHUDDetailLabelFontSize = 13;
     return timeInterval;
 }
 
-- (LPAToastHUDBackgroundStyle)toastHUDBackgroundStyle
-{
+- (LPAToastHUDBackgroundStyle)toastHUDBackgroundStyle {
     LPAToastHUDBackgroundStyle toastHUDBackgroundStyle = [objc_getAssociatedObject([self class], LPAToastHUDBackgroundStyleKey) integerValue];
     return toastHUDBackgroundStyle;
 }
 
-- (LPAToastHUDAnimation)toastHUDAnimation
-{
+- (LPAToastHUDAnimation)toastHUDAnimation {
     LPAToastHUDAnimation anmationType = [objc_getAssociatedObject([self class], LPAToastHUDAnimationKey) integerValue];
     return anmationType;
 }

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <LPAUIKit/LPAViewController.h>
+#import <LPAUIKit/LPAUIKit.h>
 
-@interface LPADemoViewController : LPAViewController
+@interface LPADemoViewController : UIViewController
 
 @end

@@ -1,6 +1,6 @@
 PODS:
   - Expecta (1.0.6)
-  - Expecta+Snapshots (3.1.1):
+  - "Expecta+Snapshots (3.1.1)":
     - Expecta (~> 1.0)
     - FBSnapshotTestCase/Core (~> 2.0)
     - Specta (~> 1.0)
@@ -15,30 +15,40 @@ PODS:
     - MJRefresh
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
-  - MJRefresh (3.1.15.1)
+  - MJRefresh (3.1.15.3)
   - Specta (1.0.7)
 
 DEPENDENCIES:
   - Expecta
-  - Expecta+Snapshots
+  - "Expecta+Snapshots"
   - FBSnapshotTestCase
   - LPAUIKit (from `../`)
   - Specta
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Expecta
+    - "Expecta+Snapshots"
+    - FBSnapshotTestCase
+    - Masonry
+    - MBProgressHUD
+    - MJRefresh
+    - Specta
+
 EXTERNAL SOURCES:
   LPAUIKit:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
-  Expecta+Snapshots: dcff217eef506dabd6dfdc7864ea2da321fafbb8
+  "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  LPAUIKit: e2f702198fe22279d43ab4f30e1f4c90a642df86
+  LPAUIKit: 3b34f2eccc02cb11e1cad9e61e384102877ca506
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
 PODFILE CHECKSUM: bd6515d445f34094d4e26284e6909c18577c201a
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.2

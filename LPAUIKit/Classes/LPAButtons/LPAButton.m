@@ -21,15 +21,13 @@
 
 #pragma mark - Class Methods
 
-+ (instancetype)buttonWithType:(UIButtonType)buttonType
-{
++ (instancetype)buttonWithType:(UIButtonType)buttonType {
     return [super buttonWithType:UIButtonTypeCustom];
 }
 
 #pragma mark - Life Cycle
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     // Set border color.
     switch (self.state) {
@@ -48,47 +46,40 @@
     }
 }
 
-- (void)setBackgroundColor:(UIColor *)color forState:(UIControlState)state
-{
+- (void)setBackgroundColor:(UIColor *)color forState:(UIControlState)state {
     UIImage *colorImage = [UIImage lpabutton_imageWithColor:color];
     [self setBackgroundImage:colorImage forState:state];
 }
 
 #pragma mark - Custom Accessors
 
-- (void)setCorderRadius:(CGFloat)corderRadius
-{
+- (void)setCorderRadius:(CGFloat)corderRadius {
     _corderRadius = corderRadius;
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = _corderRadius;
 }
 
-- (void)setNormalBackgroundColor:(UIColor *)normalBackgroundColor
-{
+- (void)setNormalBackgroundColor:(UIColor *)normalBackgroundColor {
     _normalBackgroundColor = normalBackgroundColor;
     [self setBackgroundColor:_normalBackgroundColor forState:UIControlStateNormal];
 }
 
-- (void)setSelectedBackgroundColor:(UIColor *)selectedBackgroundColor
-{
+- (void)setSelectedBackgroundColor:(UIColor *)selectedBackgroundColor {
     _selectedBackgroundColor = selectedBackgroundColor;
     [self setBackgroundColor:_selectedBackgroundColor forState:UIControlStateSelected];
 }
 
-- (void)setHigtlightedBackgroundColor:(UIColor *)higtlightedBackgroundColor
-{
+- (void)setHigtlightedBackgroundColor:(UIColor *)higtlightedBackgroundColor {
     _higtlightedBackgroundColor = higtlightedBackgroundColor;
     [self setBackgroundColor:_higtlightedBackgroundColor forState:UIControlStateHighlighted];
 }
 
-- (void)setDisableBackgroundColor:(UIColor *)disableBackgroundColor
-{
+- (void)setDisableBackgroundColor:(UIColor *)disableBackgroundColor {
     _disableBackgroundColor = disableBackgroundColor;
     [self setBackgroundColor:_disableBackgroundColor forState:UIControlStateDisabled];
 }
 
-- (void)setBorderWidth:(CGFloat)borderWidth
-{
+- (void)setBorderWidth:(CGFloat)borderWidth {
     _borderWidth = borderWidth;
     self.layer.borderWidth = _borderWidth;
 }
@@ -99,8 +90,7 @@
 
 @implementation UIImage (LPAButton)
 
-+ (UIImage *)lpabutton_imageWithColor:(UIColor *)color
-{
++ (UIImage *)lpabutton_imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();

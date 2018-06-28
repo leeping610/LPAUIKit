@@ -20,8 +20,7 @@
 #pragma mark - Life Cycle
 
 - (instancetype)initWithFrame:(CGRect)frame
-                  refreshType:(LPATableViewRefreshType)refreshType
-{
+                  refreshType:(LPATableViewRefreshType)refreshType {
     self = [super initWithFrame:frame];
     if (self) {
         self.refreshType = refreshType;
@@ -31,8 +30,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
                         style:(UITableViewStyle)style
-                  refreshType:(LPATableViewRefreshType)refreshType
-{
+                  refreshType:(LPATableViewRefreshType)refreshType {
     self = [super initWithFrame:frame style:style];
     if (self) {
         self.refreshType = refreshType;
@@ -40,39 +38,34 @@
     return self;
 }
 
-- (void)reloadData
-{
+- (void)reloadData {
     [super reloadData];
     [self.mj_header endRefreshing];
     [self.mj_footer endRefreshing];
 }
 
-- (void)beginHeaderRefresh
-{
+- (void)beginHeaderRefresh {
     [self.mj_header beginRefreshing];
 }
 
-- (void)beginFooterRefresh
-{
+- (void)beginFooterRefresh {
     [self.mj_footer beginRefreshing];
 }
 
-- (void)endRefresh
-{
+- (void)endRefresh {
     [self.mj_header endRefreshing];
     [self.mj_footer endRefreshing];
 }
 
 #pragma mark - Event Response
 
-- (void)headerRefreshDidPullHandler
-{
+- (void)headerRefreshDidPullHandler {
     if (self.lpaDelegate && [self.lpaDelegate respondsToSelector:@selector(tableViewDidHeaderPull:)]) {
         [self.lpaDelegate tableViewDidHeaderPull:self];
     }
 }
-- (void)footerRefreshDidPullHandler
-{
+
+- (void)footerRefreshDidPullHandler {
     if (self.lpaDelegate && [self.lpaDelegate respondsToSelector:@selector(tableViewDidFooterPull:)]) {
         [self.lpaDelegate tableViewDidFooterPull:self];
     }
@@ -80,8 +73,7 @@
 
 #pragma mark - Custom Accessors
 
-- (MJRefreshNormalHeader *)refreshHeader
-{
+- (MJRefreshNormalHeader *)refreshHeader {
     if (!_refreshHeader) {
         __weak typeof(self) weakSelf = self;
         _refreshHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -92,8 +84,7 @@
     return _refreshHeader;
 }
 
-- (MJRefreshBackNormalFooter *)refreshFooter
-{
+- (MJRefreshBackNormalFooter *)refreshFooter {
     if (!_refreshFooter) {
         __weak typeof(self) weakSelf = self;
         _refreshFooter = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
@@ -103,8 +94,7 @@
     return _refreshFooter;
 }
 
-- (void)setRefreshType:(LPATableViewRefreshType)refreshType
-{
+- (void)setRefreshType:(LPATableViewRefreshType)refreshType {
     _refreshType = refreshType;
     if (_refreshType & LPATableViewRefreshTypeHeader) {
         self.mj_header = self.refreshHeader;
