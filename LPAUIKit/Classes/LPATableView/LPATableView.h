@@ -7,37 +7,27 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_OPTIONS(NSInteger, LPATableViewRefreshType)
-{
-    LPATableViewRefreshTypeNone = 0,
-    LPATableViewRefreshTypeHeader = 1 << 1,
-    LPATableViewRefreshTypeFooter = 1 << 2
-};
+#import "LPATableViewModel.h"
+#import "LPATableSectionViewModel.h"
+#import "LPATableSectionViewModelProtocol.h"
+#import "LPATableCellViewModelProtocol.h"
+#import "LPATableViewCellProtocol.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @class LPATableView;
 
 @protocol LPATableViewDelegate<NSObject>
-
-@optional
-
-- (void)tableViewDidHeaderPull:(LPATableView *)tableView;
-- (void)tableViewDidFooterPull:(LPATableView *)tableView;
 
 @end
 
 @interface LPATableView : UITableView
 
 @property (nonatomic, weak) id<LPATableViewDelegate> lpaDelegate;
-@property (nonatomic, assign) LPATableViewRefreshType refreshType;
+@property (nonatomic, strong, readonly) LPATableViewModel *tableViewModel;
 
-- (instancetype)initWithFrame:(CGRect)frame
-                  refreshType:(LPATableViewRefreshType)refreshType;
-- (instancetype)initWithFrame:(CGRect)frame
-                        style:(UITableViewStyle)style
-                  refreshType:(LPATableViewRefreshType)refreshType;
-
-- (void)beginHeaderRefresh;
-- (void)beginFooterRefresh;
-- (void)endRefresh;
+- (void)bindTableViewModel:(LPATableViewModel *)tableViewModel;
 
 @end
+
+NS_ASSUME_NONNULL_END

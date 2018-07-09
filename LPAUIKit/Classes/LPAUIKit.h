@@ -9,9 +9,7 @@
 #define LPAUIKit_h
 
 // viewControllers
-#import <LPAUIKit/LPATableViewController.h>
 #import <LPAUIKit/LPACollectionViewController.h>
-
 // Categories
 #import <LPAUIKit/NSString+LPAAttributedString.h>
 #import <LPAUIKit/UIView+LPAToastHUD.h>
@@ -23,7 +21,7 @@
 #import <LPAUIKit/UINavigationController+LPAStatusBar.h>
 // Views
 #import <LPAUIKit/LPAButton.h>
-
+#import <LPAUIKit/LPATableView.h>
 // LPATableViewManager
 #import <LPAUIKit/LPATableViewManager.h>
 

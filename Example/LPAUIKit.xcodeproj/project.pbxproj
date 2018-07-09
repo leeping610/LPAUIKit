@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		072A03901F987FDE00CE59C8 /* LPADemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 072A038F1F987FDE00CE59C8 /* LPADemoTableViewController.m */; };
-		072A03931F987FF900CE59C8 /* LPADemoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 072A03921F987FF900CE59C8 /* LPADemoCollectionViewController.m */; };
-		074DCAB61FCAEA2F00A171A7 /* LPADemoWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074DCAB51FCAEA2F00A171A7 /* LPADemoWebViewController.m */; };
+		07BD608020EE1003004E529B /* LPADemoWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BD607920EE1003004E529B /* LPADemoWebViewController.m */; };
+		07BD608120EE1003004E529B /* LPADemoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BD607C20EE1003004E529B /* LPADemoCollectionViewController.m */; };
+		07BD608220EE1003004E529B /* LPADemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BD607E20EE1003004E529B /* LPADemoTableViewController.m */; };
+		07BD608620EE101A004E529B /* LPADemoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BD608420EE101A004E529B /* LPADemoTableViewCell.m */; };
+		07BD608720EE101A004E529B /* LPADemoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07BD608520EE101A004E529B /* LPADemoTableViewCell.xib */; };
+		07BD608A20EE1313004E529B /* LPADemoTableCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BD608920EE1313004E529B /* LPADemoTableCellViewModel.m */; };
 		53F750F94E7684FADEEC2E4A /* Pods_LPAUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B15DB8F34276525E0A5AF68 /* Pods_LPAUIKit_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -40,12 +43,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		072A038E1F987FDE00CE59C8 /* LPADemoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPADemoTableViewController.h; sourceTree = "<group>"; };
-		072A038F1F987FDE00CE59C8 /* LPADemoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPADemoTableViewController.m; sourceTree = "<group>"; };
-		072A03911F987FF900CE59C8 /* LPADemoCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPADemoCollectionViewController.h; sourceTree = "<group>"; };
-		072A03921F987FF900CE59C8 /* LPADemoCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPADemoCollectionViewController.m; sourceTree = "<group>"; };
-		074DCAB41FCAEA2F00A171A7 /* LPADemoWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPADemoWebViewController.h; sourceTree = "<group>"; };
-		074DCAB51FCAEA2F00A171A7 /* LPADemoWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPADemoWebViewController.m; sourceTree = "<group>"; };
+		07BD607820EE1003004E529B /* LPADemoWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPADemoWebViewController.h; sourceTree = "<group>"; };
+		07BD607920EE1003004E529B /* LPADemoWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPADemoWebViewController.m; sourceTree = "<group>"; };
+		07BD607B20EE1003004E529B /* LPADemoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPADemoCollectionViewController.h; sourceTree = "<group>"; };
+		07BD607C20EE1003004E529B /* LPADemoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPADemoCollectionViewController.m; sourceTree = "<group>"; };
+		07BD607E20EE1003004E529B /* LPADemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPADemoTableViewController.m; sourceTree = "<group>"; };
+		07BD607F20EE1003004E529B /* LPADemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPADemoTableViewController.h; sourceTree = "<group>"; };
+		07BD608320EE101A004E529B /* LPADemoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPADemoTableViewCell.h; sourceTree = "<group>"; };
+		07BD608420EE101A004E529B /* LPADemoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPADemoTableViewCell.m; sourceTree = "<group>"; };
+		07BD608520EE101A004E529B /* LPADemoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LPADemoTableViewCell.xib; sourceTree = "<group>"; };
+		07BD608820EE1313004E529B /* LPADemoTableCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPADemoTableCellViewModel.h; sourceTree = "<group>"; };
+		07BD608920EE1313004E529B /* LPADemoTableCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPADemoTableCellViewModel.m; sourceTree = "<group>"; };
 		0C8B662E7BB7F29C38972B93 /* Pods-LPAUIKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPAUIKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LPAUIKit_Tests/Pods-LPAUIKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		17A91B430FED294DB966953F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2ECECB9AF0E1BAD653C992D4 /* LPAUIKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LPAUIKit.podspec; path = ../LPAUIKit.podspec; sourceTree = "<group>"; };
@@ -104,6 +112,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07BD607720EE1003004E529B /* WebDemo */ = {
+			isa = PBXGroup;
+			children = (
+				07BD607820EE1003004E529B /* LPADemoWebViewController.h */,
+				07BD607920EE1003004E529B /* LPADemoWebViewController.m */,
+			);
+			path = WebDemo;
+			sourceTree = "<group>";
+		};
+		07BD607A20EE1003004E529B /* CollectionViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				07BD607B20EE1003004E529B /* LPADemoCollectionViewController.h */,
+				07BD607C20EE1003004E529B /* LPADemoCollectionViewController.m */,
+			);
+			path = CollectionViewDemo;
+			sourceTree = "<group>";
+		};
+		07BD607D20EE1003004E529B /* TableViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				07BD607F20EE1003004E529B /* LPADemoTableViewController.h */,
+				07BD607E20EE1003004E529B /* LPADemoTableViewController.m */,
+				07BD608820EE1313004E529B /* LPADemoTableCellViewModel.h */,
+				07BD608920EE1313004E529B /* LPADemoTableCellViewModel.m */,
+				07BD608320EE101A004E529B /* LPADemoTableViewCell.h */,
+				07BD608420EE101A004E529B /* LPADemoTableViewCell.m */,
+				07BD608520EE101A004E529B /* LPADemoTableViewCell.xib */,
+			);
+			path = TableViewDemo;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -141,16 +181,13 @@
 		6003F593195388D20070C39A /* Example for LPAUIKit */ = {
 			isa = PBXGroup;
 			children = (
-				6003F59C195388D20070C39A /* LPAAppDelegate.h */,
-				6003F59D195388D20070C39A /* LPAAppDelegate.m */,
+				07BD607A20EE1003004E529B /* CollectionViewDemo */,
+				07BD607D20EE1003004E529B /* TableViewDemo */,
+				07BD607720EE1003004E529B /* WebDemo */,
 				6003F5A5195388D20070C39A /* LPADemoViewController.h */,
 				6003F5A6195388D20070C39A /* LPADemoViewController.m */,
-				072A038E1F987FDE00CE59C8 /* LPADemoTableViewController.h */,
-				072A038F1F987FDE00CE59C8 /* LPADemoTableViewController.m */,
-				072A03911F987FF900CE59C8 /* LPADemoCollectionViewController.h */,
-				072A03921F987FF900CE59C8 /* LPADemoCollectionViewController.m */,
-				074DCAB41FCAEA2F00A171A7 /* LPADemoWebViewController.h */,
-				074DCAB51FCAEA2F00A171A7 /* LPADemoWebViewController.m */,
+				6003F59C195388D20070C39A /* LPAAppDelegate.h */,
+				6003F59D195388D20070C39A /* LPAAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
@@ -300,6 +337,7 @@
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				07BD608720EE101A004E529B /* LPADemoTableViewCell.xib in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,6 +424,7 @@
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -393,6 +432,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -406,11 +446,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				072A03901F987FDE00CE59C8 /* LPADemoTableViewController.m in Sources */,
-				072A03931F987FF900CE59C8 /* LPADemoCollectionViewController.m in Sources */,
+				07BD608020EE1003004E529B /* LPADemoWebViewController.m in Sources */,
+				07BD608120EE1003004E529B /* LPADemoCollectionViewController.m in Sources */,
+				07BD608620EE101A004E529B /* LPADemoTableViewCell.m in Sources */,
+				07BD608220EE1003004E529B /* LPADemoTableViewController.m in Sources */,
+				07BD608A20EE1313004E529B /* LPADemoTableCellViewModel.m in Sources */,
 				6003F59E195388D20070C39A /* LPAAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* LPADemoViewController.m in Sources */,
-				074DCAB61FCAEA2F00A171A7 /* LPADemoWebViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,7 +586,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LPAUIKit/LPAUIKit-Prefix.pch";
 				INFOPLIST_FILE = "LPAUIKit/LPAUIKit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -564,7 +606,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LPAUIKit/LPAUIKit-Prefix.pch";
 				INFOPLIST_FILE = "LPAUIKit/LPAUIKit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

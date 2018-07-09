@@ -12,10 +12,6 @@
 #import "LPADemoWebViewController.h"
 
 #import <LPAUIKit/LPAUIKit.h>
-#import <LPAUIKit/LPATableViewController.h>
-#import <LPAUIKit/LPACollectionViewController.h>
-#import <LPAUIKit/UIView+LPAToastHUD.h>
-#import <LPAUIKit/LPAHUD.h>
 
 @interface LPADemoViewController ()
 
@@ -62,8 +58,31 @@
     [leftHandlerBlockList addObject:leftBlock2];
     [rightHandlerBlockList addObject:rightBlock1];
     [rightHandlerBlockList addObject:rightBlock2];
-    [self lpa_addLeftBarButtonItemWithTextList:@[@"左1", @"左2"] handlerBlockList:leftHandlerBlockList];
-    [self lpa_addRightBarButtonItemWithTextList:@[@"右1", @"右2"] handlerBlockList:rightHandlerBlockList];
+    [self lpa_addLeftBarButtonItemWithTextList:@[@"left1", @"左2"] handlerBlockList:leftHandlerBlockList];
+    [self lpa_addRightBarButtonItemWithTextList:@[@"右1", @"right2"] handlerBlockList:rightHandlerBlockList];
+    /// GCD
+//    dispatch_queue_t queue1 = dispatch_queue_create("com.leeping.gcd.queue1", DISPATCH_QUEUE_SERIAL);
+//    dispatch_queue_t queue2 = dispatch_queue_create("com.leeping.gcd.queue2", DISPATCH_QUEUE_CONCURRENT);
+//    dispatch_async(queue2, ^{
+//        dispatch_sync(queue1, ^{
+//            for (NSInteger i = 0; i < 5; i++) {
+//                [NSThread sleepForTimeInterval:0.5];
+//                NSLog(@"1-%@", [NSThread currentThread]);
+//            }
+//        });
+//        dispatch_sync(queue1, ^{
+//            for (NSInteger i = 0; i < 5; i++) {
+//                [NSThread sleepForTimeInterval:0.5];
+//                NSLog(@"2-%@", [NSThread currentThread]);
+//            }
+//        });
+//        dispatch_sync(queue1, ^{
+//            for (NSInteger i = 0; i < 5; i++) {
+//                [NSThread sleepForTimeInterval:0.5];
+//                NSLog(@"3-%@", [NSThread currentThread]);
+//            }
+//        });
+//    });
 }
 
 - (void)didReceiveMemoryWarning {

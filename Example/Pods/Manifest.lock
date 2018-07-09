@@ -13,9 +13,11 @@ PODS:
     - Masonry
     - MBProgressHUD
     - MJRefresh
+    - ReactiveObjC
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - MJRefresh (3.1.15.3)
+  - ReactiveObjC (3.1.0)
   - Specta (1.0.7)
 
 DEPENDENCIES:
@@ -33,6 +35,7 @@ SPEC REPOS:
     - Masonry
     - MBProgressHUD
     - MJRefresh
+    - ReactiveObjC
     - Specta
 
 EXTERNAL SOURCES:
@@ -43,10 +46,11 @@ SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  LPAUIKit: 3b34f2eccc02cb11e1cad9e61e384102877ca506
+  LPAUIKit: 5c5bce5ea24cefe32ccc20e680fe918d6b962431
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
 PODFILE CHECKSUM: bd6515d445f34094d4e26284e6909c18577c201a

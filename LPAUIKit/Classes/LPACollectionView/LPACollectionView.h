@@ -7,8 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_OPTIONS(NSInteger, LPACollectionViewRefreshType)
-{
+typedef NS_OPTIONS(NSInteger, LPACollectionViewRefreshType) {
     LPACollectionViewRefreshTypeNone = 0,
     LPACollectionViewRefreshTypeHeader = 1 << 1,
     LPACollectionViewRefreshTypeFooter = 1 << 2
