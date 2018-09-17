@@ -469,8 +469,6 @@
     if ([cellViewModel respondsToSelector:@selector(tableViewCellAccessoryType)]) {
         tableViewCell.accessoryType = cellViewModel.tableViewCellAccessoryType;
     }
-    UITextField *textFiled = [[UITextField alloc] init];
-    textFiled.textContentType = UITextContentTypeOneTimeCode;
     return cell;
 }
 
