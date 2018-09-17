@@ -501,7 +501,7 @@
     if (sectionNumber) {
         return sectionNumber.integerValue;
     }else {
-        [_sectionIndexTitles indexOfObject:title];
+        return [_sectionIndexTitles indexOfObject:title];
     }
 }
 
