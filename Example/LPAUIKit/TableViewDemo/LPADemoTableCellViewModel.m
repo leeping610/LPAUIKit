@@ -11,6 +11,8 @@
 
 @interface LPADemoTableCellViewModel ()
 
+//@property (nonatomic, copy) NSString *testProperty;
+
 @end
 
 @implementation LPADemoTableCellViewModel
@@ -27,16 +29,28 @@
     return UITableViewCellStyleSubtitle;
 }
 
+- (UITableViewCellEditingStyle)tableViewCellEditingStyle {
+    return UITableViewCellEditingStyleInsert;
+}
+
 - (NSString *)titleText {
-    return @"hahahahaha";
+    return self.title;
 }
 
 - (NSString *)detailText {
-    return @"xixixixixi";
+    return self.descriptionText;
 }
 
 - (CGFloat)cellHeight {
-    return 200.0f;
+    return 100.0f;
+}
+
+- (BOOL)canEditRow {
+    return YES;
+}
+
+- (BOOL)canMoveRow {
+    return YES;
 }
 
 @end

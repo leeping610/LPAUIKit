@@ -24,14 +24,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view addSubview:self.tableView];
     // Demo
     LPATableViewModel *tableViewModel = [[LPATableViewModel alloc] init];
-    LPADemoTableCellViewModel *demoViewModel = [[LPADemoTableCellViewModel alloc] init];
-    demoViewModel.title = @"1111";
-    demoViewModel.descriptionText = @"222";
+    for (NSInteger i = 0; i < 100; i++) {
+        LPADemoTableCellViewModel *demoViewModel = [[LPADemoTableCellViewModel alloc] init];
+        demoViewModel.title = [NSString stringWithFormat:@"第%ld个标题", i];
+        demoViewModel.descriptionText = [NSString stringWithFormat:@"第%ld个描述🐱", i];
+        [tableViewModel addCellViewModel:demoViewModel];
+    }
     [self.tableView bindTableViewModel:tableViewModel];
-    [tableViewModel addCellViewModel:demoViewModel];
+    
+    __weak typeof(self) weakSelf = self;
+    LPABarButtonItemHandlerBlock rightBlock1 = ^(UIButton *barButton) {
+        [tableViewModel removeAllSection];
+    };
+    LPABarButtonItemHandlerBlock rightBlock2 = ^(UIButton *barButton) {
+        [weakSelf.tableView reloadData];
+    };
+    LPABarButtonItemHandlerBlock rightBlock3 = ^(UIButton *barButton) {
+        [weakSelf.tableView setEditing:!weakSelf.tableView.isEditing animated:YES];
+    };
+    [self lpa_addRightBarButtonItemWithTextList:@[@"删", @"刷", @"编"] handlerBlockList:@[rightBlock1, rightBlock2, rightBlock3]];
+    [self.view addSubview:self.tableView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,11 +53,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - LPATableView Delegate
+
+- (void)tableView:(LPATableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    LPADemoTableCellViewModel *demoViewModel = [[LPADemoTableCellViewModel alloc] init];
+    demoViewModel.title = [NSString stringWithFormat:@"我是添加的%@", indexPath];
+    demoViewModel.descriptionText = [NSString stringWithFormat:@"我也是添加的%@", indexPath];
+    [_tableView.tableViewModel insertCellViewModel:demoViewModel atRowIndex:indexPath.row withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)tableView:(LPATableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 #pragma mark - Custom Accessors
 
 - (LPATableView *)tableView {
     if (!_tableView) {
         _tableView = [[LPATableView alloc] initWithFrame:self.view.bounds];
+        _tableView.lpaDelegate = self;
     }
     return _tableView;
 }

@@ -9,10 +9,12 @@
 
 @protocol LPATableCellViewModelProtocol <NSObject>
 
-@optional
+@required
 
 - (Class)reuseViewClass;
 - (NSString *)cellIdentifier;
+
+@optional
 
 - (CGFloat)cellHeight;
 - (CGFloat)estimatedHeight;
@@ -23,5 +25,14 @@
 - (UITableViewCellStyle)tableViewCellStyle;
 - (UITableViewCellSelectionStyle)tableViewCellSelectionStyle;
 - (UITableViewCellAccessoryType)tableViewCellAccessoryType;
+- (UITableViewCellEditingStyle)tableViewCellEditingStyle;
+- (NSString *)titleForDeleteConfirmationButton;
+
+- (BOOL)tableViewCellshouldHighlight;
+- (BOOL)canEditRow;
+- (BOOL)canMoveRow;
+
+- (BOOL)shouldIndentWhileEditing;
+- (NSInteger)indentationLevelForRowAtIndexPath;
 
 @end

@@ -19,13 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<UITableViewDataSource> tableViewDataSource;
 
 @property (nonatomic, strong, readonly) RACSignal *reloadDataSignal;
-@property (nonatomic, strong, readonly) RACSignal *scrollToRowAtIndexPathSignal;
-@property (nonatomic, strong, readonly) RACSignal *scrollToNearestSelectedRowSignal;
 @property (nonatomic, strong, readonly) RACSignal *insertSectionsSignal;
 @property (nonatomic, strong, readonly) RACSignal *deleteSectionsSignal;
 @property (nonatomic, strong, readonly) RACSignal *replaceSectionsSignal;
 @property (nonatomic, strong, readonly) RACSignal *reloadSectionsSignal;
-
 @property (nonatomic, strong, readonly) RACSignal *insertRowsAtIndexPathsSignal;
 @property (nonatomic, strong, readonly) RACSignal *deleteRowsAtIndexPathsSignal;
 @property (nonatomic, strong, readonly) RACSignal *replaceRowsAtIndexPathsSignal;
@@ -37,12 +34,27 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) RACSignal *didEndDisplayingCellSignal;
 @property (nonatomic, strong, readonly) RACSignal *didEndDisplayingHeaderViewSignal;
 @property (nonatomic, strong, readonly) RACSignal *didEndDisplayingFooterViewSignal;
+
+@property (nonatomic, strong, readonly) RACSignal *scrollToRowAtIndexPathSignal;
+@property (nonatomic, strong, readonly) RACSignal *scrollToNearestSelectedRowSignal;
 @property (nonatomic, strong, readonly) RACSignal *didHighlightRowAtIndexPathSignal;
 @property (nonatomic, strong, readonly) RACSignal *didUnhighlightRowAtIndexPathSignal;
 @property (nonatomic, strong, readonly) RACSignal *didSelectRowAtIndexPathSignal;
 @property (nonatomic, strong, readonly) RACSignal *didDeselectRowAtIndexPathSignal;
+@property (nonatomic, strong, readonly) RACSignal *willSelectRowAtIndexPathSignal;
+@property (nonatomic, strong, readonly) RACSignal *willDeselectRowAtIndexPathSignal;
 @property (nonatomic, strong, readonly) RACSignal *willBeginEditingRowAtIndexPathSignal;
 @property (nonatomic, strong, readonly) RACSignal *didEndEditingRowAtIndexPathSignal;
+@property (nonatomic, strong, readonly) RACSignal *sectionForSectionIndexTitleSignal;
+@property (nonatomic, strong, readonly) RACSignal *moveRowAtIndexPathToIndexPathSignal;
+@property (nonatomic, strong, readonly) RACSignal *commitEditingStyleForRowAtIndexPathSignal;
+@property (nonatomic, strong, readonly) RACSignal *editActionsForRowAtIndexPathSignal;
+
+@property (nonatomic, strong, readonly) RACSignal *shouldShowMenuForRowAtIndexPathSignal;
+@property (nonatomic, strong, readonly) RACSignal *canPerformActionSignal;
+@property (nonatomic, strong, readonly) RACSignal *performActionSignal;
+
+@property (nonatomic, strong) NSArray<NSString *> *sectionIndexTitles;
 
 - (void)new NS_UNAVAILABLE;
 

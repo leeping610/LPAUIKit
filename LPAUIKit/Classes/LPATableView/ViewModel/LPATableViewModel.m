@@ -10,6 +10,8 @@
 
 #import "LPATableViewCellProtocol.h"
 
+#import "LPAUIKit-Macros.h"
+
 #define LPA_TABLE_VIEWMODEL_RAC_SUBJECT(subjectName, signalName) \
 - (RACSubject *)subjectName { \
     if (!_##subjectName) { \
@@ -26,14 +28,10 @@
 @interface LPATableViewModel () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) RACSubject *reloadDataSubject;
-@property (nonatomic, strong) RACSubject *scrollToRowAtIndexPathSubject;
-@property (nonatomic, strong) RACSubject *scrollToNearestSelectedRowSubject;
-
 @property (nonatomic, strong) RACSubject *insertSectionsSubject;
 @property (nonatomic, strong) RACSubject *deleteSectionsSubject;
 @property (nonatomic, strong) RACSubject *replaceSectionsSubject;
 @property (nonatomic, strong) RACSubject *reloadSectionsSubject;
-
 @property (nonatomic, strong) RACSubject *insertRowsAtIndexPathsSubject;
 @property (nonatomic, strong) RACSubject *deleteRowsAtIndexPathsSubject;
 @property (nonatomic, strong) RACSubject *replaceRowsAtIndexPathsSubject;
@@ -45,12 +43,25 @@
 @property (nonatomic, strong) RACSubject *didEndDisplayingCellSubject;
 @property (nonatomic, strong) RACSubject *didEndDisplayingHeaderViewSubject;
 @property (nonatomic, strong) RACSubject *didEndDisplayingFooterViewSubject;
+
+@property (nonatomic, strong) RACSubject *scrollToRowAtIndexPathSubject;
+@property (nonatomic, strong) RACSubject *scrollToNearestSelectedRowSubject;
 @property (nonatomic, strong) RACSubject *didHighlightRowAtIndexPathSubject;
 @property (nonatomic, strong) RACSubject *didUnhighlightRowAtIndexPathSubject;
 @property (nonatomic, strong) RACSubject *didSelectRowAtIndexPathSubject;
 @property (nonatomic, strong) RACSubject *didDeselectRowAtIndexPathSubject;
+@property (nonatomic, strong) RACSubject *willSelectRowAtIndexPathSubject;
+@property (nonatomic, strong) RACSubject *willDeselectRowAtIndexPathSubject;
 @property (nonatomic, strong) RACSubject *willBeginEditingRowAtIndexPathSubject;
 @property (nonatomic, strong) RACSubject *didEndEditingRowAtIndexPathSubject;
+@property (nonatomic, strong) RACSubject *sectionForSectionIndexTitleSubject;
+@property (nonatomic, strong) RACSubject *moveRowAtIndexPathToIndexPathSubject;
+@property (nonatomic, strong) RACSubject *commitEditingStyleForRowAtIndexPathSubject;
+@property (nonatomic, strong) RACSubject *editActionsForRowAtIndexPathSubject;
+
+@property (nonatomic, strong) RACSubject *shouldShowMenuForRowAtIndexPathSubject;
+@property (nonatomic, strong) RACSubject *canPerformActionSubject;
+@property (nonatomic, strong) RACSubject *performActionSubject;
 
 @property (nonatomic, strong) NSMutableArray<id<LPATableSectionViewModelProtocol>> *sectionList;
 
@@ -387,6 +398,22 @@
     return _sectionList[section].cellList.count;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    id<LPATableSectionViewModelProtocol> sectionViewModel = _sectionList[section];
+    if ([sectionViewModel respondsToSelector:@selector(sectionHeaderTitle)]) {
+        return sectionViewModel.sectionHeaderTitle;
+    }
+    return nil;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    id<LPATableSectionViewModelProtocol> sectionViewModel = _sectionList[section];
+    if ([sectionViewModel respondsToSelector:@selector(sectionFooterTitle)]) {
+        return sectionViewModel.sectionFooterTitle;
+    }
+    return nil;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id<LPATableSectionViewModelProtocol> sectionViewModel = _sectionList[indexPath.section];
     id<LPATableCellViewModelProtocol> cellViewModel = sectionViewModel.cellList[indexPath.row];
@@ -442,10 +469,88 @@
     if ([cellViewModel respondsToSelector:@selector(tableViewCellAccessoryType)]) {
         tableViewCell.accessoryType = cellViewModel.tableViewCellAccessoryType;
     }
+    UITextField *textFiled = [[UITextField alloc] init];
+    textFiled.textContentType = UITextContentTypeOneTimeCode;
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<LPATableCellViewModelProtocol> cellViewModel = [self cellViewModelForIndexPath:indexPath];
+    if ([cellViewModel respondsToSelector:@selector(canEditRow)]) {
+        return cellViewModel.canEditRow;
+    }
+    return YES;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<LPATableCellViewModelProtocol> cellViewModel = [self cellViewModelForIndexPath:indexPath];
+    if ([cellViewModel respondsToSelector:@selector(canMoveRow)]) {
+        return cellViewModel.canMoveRow;
+    }
+    return YES;
+}
+
+- (nullable NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return self.sectionIndexTitles;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    __block NSNumber *sectionNumber = nil;
+    void (^sectionBlock)(NSNumber *) = ^(NSNumber *number){
+        sectionNumber = number;
+    };
+    [self.sectionForSectionIndexTitleSubject sendNext:RACTuplePack(title, @(index), [sectionBlock copy])];
+    if (sectionNumber) {
+        return sectionNumber.integerValue;
+    }else {
+        [_sectionIndexTitles indexOfObject:title];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        id<LPATableCellViewModelProtocol> cellViewModel = [self cellViewModelForIndexPath:indexPath];
+        [self removeCellViewModel:cellViewModel withRowAnimation:UITableViewRowAnimationAutomatic];
+    }else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        [self.commitEditingStyleForRowAtIndexPathSubject sendNext:RACTuplePack(@(editingStyle), indexPath)];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    id<LPATableCellViewModelProtocol> sourceCellViewModel = [self cellViewModelForIndexPath:sourceIndexPath];
+    id<LPATableSectionViewModelProtocol> sourceSectionViewModel = _sectionList[sourceIndexPath.section];
+    id<LPATableSectionViewModelProtocol> destinationSectionViewModel = _sectionList[destinationIndexPath.section];
+    [sourceSectionViewModel removeCellViewModel:sourceCellViewModel];
+    [destinationSectionViewModel insertCellViewModel:sourceCellViewModel atIndex:destinationIndexPath.row];
+    [self.moveRowAtIndexPathToIndexPathSubject sendNext:RACTuplePack(sourceIndexPath, destinationIndexPath)];
+}
+
 #pragma mark - UITableView Delegate
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.willDisplayCellSubject sendNext:RACTuplePack(cell, indexPath)];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    [self.willDisplayHeaderViewSubject sendNext:RACTuplePack(view, @(section))];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
+    [self.willDisplayFooterViewSubject sendNext:RACTuplePack(view, @(section))];
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<LPATableCellViewModelProtocol> cellViewModel = [self cellViewModelForIndexPath:indexPath];
+    [self.didEndDisplayingCellSubject sendNext:RACTuplePack(cell, cellViewModel)];
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
+    [self.didEndDisplayingHeaderViewSubject sendNext:RACTuplePack(view, @(section))];
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingFooterView:(UIView *)view forSection:(NSInteger)section {
+    [self.didEndDisplayingFooterViewSubject sendNext:RACTuplePack(view, @(section))];
+}
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     id<LPATableCellViewModelProtocol> cellViewModel = [self cellViewModelForIndexPath:indexPath];
@@ -495,27 +600,172 @@
     return 0;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    id<LPATableSectionViewModelProtocol> sectionViewModel = _sectionList[section];
+    if ([sectionViewModel respondsToSelector:@selector(sectionHeaderView)]) {
+        return sectionViewModel.sectionHeaderView;
+    }
+    return nil;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    id<LPATableSectionViewModelProtocol> sectionViewModel = _sectionList[section];
+    if ([sectionViewModel respondsToSelector:@selector(sectionFooterView)]) {
+        return sectionViewModel.sectionFooterView;
+    }
+    return nil;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<LPATableCellViewModelProtocol> cellViewModel = [self cellViewModelForIndexPath:indexPath];
+    if ([cellViewModel respondsToSelector:@selector(tableViewCellshouldHighlight)]) {
+        return cellViewModel.tableViewCellshouldHighlight;
+    }
+    return YES;
 }
 
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self.didHighlightRowAtIndexPathSubject sendNext:RACTuplePack(indexPath)];
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-    
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.didUnhighlightRowAtIndexPathSubject sendNext:RACTuplePack(indexPath)];
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
-    
+- (nullable NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    __block NSIndexPath *targetIndexPath = nil;
+    void (^block)(NSIndexPath *blockIndexPath) = ^(NSIndexPath *blockIndexPath) {
+        targetIndexPath = blockIndexPath;
+    };
+    [self.willSelectRowAtIndexPathSubject sendNext:RACTuplePack(indexPath, [block copy])];
+    if (!targetIndexPath) {
+        return indexPath;
+    }
+    return targetIndexPath;
 }
+
+- (nullable NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    __block NSIndexPath *targetIndexPath = nil;
+    void (^block)(NSIndexPath *blockIndexPath) = ^(NSIndexPath *blockIndexPath) {
+        targetIndexPath = blockIndexPath;
+    };
+    [self.willDeselectRowAtIndexPathSubject sendNext:RACTuplePack(indexPath, [block copy])];
+    if (!targetIndexPath) {
+        return indexPath;
+    }
+    return targetIndexPath;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.didSelectRowAtIndexPathSubject sendNext:RACTuplePack(indexPath)];
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.didDeselectRowAtIndexPathSubject sendNext:RACTuplePack(indexPath)];
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<LPATableCellViewModelProtocol> cellViewModel = [self cellViewModelForIndexPath:indexPath];
+    if ([cellViewModel respondsToSelector:@selector(tableViewCellEditingStyle)]) {
+        return cellViewModel.tableViewCellEditingStyle;
+    }
+    return UITableViewCellEditingStyleNone;
+}
+
+- (nullable NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<LPATableCellViewModelProtocol> cellViewModel = [self cellViewModelForIndexPath:indexPath];
+    if ([cellViewModel respondsToSelector:@selector(titleForDeleteConfirmationButton)]) {
+        return cellViewModel.titleForDeleteConfirmationButton;
+    }
+    return LPAUIKitLocalizedResource(@"Delete");
+}
+
+- (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<LPATableCellViewModelProtocol> cellViewModel = [self cellViewModelForIndexPath:indexPath];
+    __block NSArray<UITableViewRowAction *> *rowActionList = nil;
+    void (^rowActionBlock)(NSArray<UITableViewRowAction *> *) = ^(NSArray<UITableViewRowAction *> *rowAction) {
+        rowActionList = rowAction;
+    };
+    [self.editActionsForRowAtIndexPathSubject sendNext:RACTuplePack(indexPath, [rowActionBlock copy])];
+    return rowActionList;
+}
+
+- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<LPATableCellViewModelProtocol> cellViewModel = [self cellViewModelForIndexPath:indexPath];
+    [self.willBeginEditingRowAtIndexPathSubject sendNext:RACTuplePack(cellViewModel)];
+}
+
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(nullable NSIndexPath *)indexPath {
+    id<LPATableCellViewModelProtocol> cellViewModel = [self cellViewModelForIndexPath:indexPath];
+    [self.didDeselectRowAtIndexPathSubject sendNext:RACTuplePack(cellViewModel)];
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
+    if (sourceIndexPath.section == proposedDestinationIndexPath.section) {
+        return proposedDestinationIndexPath;
+    }else{
+        return sourceIndexPath;
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<LPATableCellViewModelProtocol> cellViewModel = [self cellViewModelForIndexPath:indexPath];
+    if ([cellViewModel respondsToSelector:@selector(shouldIndentWhileEditing)]) {
+        return [cellViewModel shouldIndentWhileEditing];
+    }
+    return YES;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<LPATableCellViewModelProtocol> cellViewModel = [self cellViewModelForIndexPath:indexPath];
+    if ([cellViewModel respondsToSelector:@selector(indentationLevelForRowAtIndexPath)]) {
+        return [cellViewModel indentationLevelForRowAtIndexPath];
+    }
+    return 0;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath {
+    __block BOOL shouldShowMenu = NO;
+    void (^block)(BOOL should) = ^(BOOL should) {
+        shouldShowMenu = should;
+    };
+    [self.shouldShowMenuForRowAtIndexPathSubject sendNext:RACTuplePack(indexPath, [block copy])];
+    return shouldShowMenu;
+}
+
+//- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(nullable id)sender {
+//    __block BOOL canPerformAction = YES;
+//    void (^block)(BOOL can) = ^(BOOL can) {
+//        canPerformAction = can;
+//    };
+//    [self.canPerformActionSubject sendNext:RACTuplePack(NSStringFromSelector(action), indexPath, sender, [block copy])];
+//    return canPerformAction;
+//}
+//
+//- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(nullable id)sender {
+//    [self.performActionSubject sendNext:RACTuplePack(NSStringFromSelector(action), indexPath, sender)];
+//}
+
+// 没搞懂干啥用，先不管(似乎是tvOS用)
+//- (BOOL)tableView:(UITableView *)tableView canFocusRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return YES;
+//}
+//
+//- (BOOL)tableView:(UITableView *)tableView shouldUpdateFocusInContext:(UITableViewFocusUpdateContext *)context {
+//    return YES;
+//}
+//
+//- (void)tableView:(UITableView *)tableView didUpdateFocusInContext:(UITableViewFocusUpdateContext *)context withAnimationCoordinator:(UIFocusAnimationCoordinator *)coordinator {
+//
+//}
+//
+//- (nullable NSIndexPath *)indexPathForPreferredFocusedViewInTableView:(UITableView *)tableView {
+//    return nil;
+//}
 
 #pragma mark - RACSignal
 
 LPA_TABLE_VIEWMODEL_RAC_SINGAL(reloadDataSignal, reloadDataSubject)
-LPA_TABLE_VIEWMODEL_RAC_SINGAL(scrollToRowAtIndexPathSignal, scrollToRowAtIndexPathSubject)
-LPA_TABLE_VIEWMODEL_RAC_SINGAL(scrollToNearestSelectedRowSignal, scrollToNearestSelectedRowSubject)
 LPA_TABLE_VIEWMODEL_RAC_SINGAL(insertSectionsSignal, insertSectionsSubject)
 LPA_TABLE_VIEWMODEL_RAC_SINGAL(deleteSectionsSignal, deleteSectionsSubject)
 LPA_TABLE_VIEWMODEL_RAC_SINGAL(replaceSectionsSignal, replaceSectionsSubject)
@@ -525,11 +775,35 @@ LPA_TABLE_VIEWMODEL_RAC_SINGAL(deleteRowsAtIndexPathsSignal, deleteRowsAtIndexPa
 LPA_TABLE_VIEWMODEL_RAC_SINGAL(replaceRowsAtIndexPathsSignal, replaceRowsAtIndexPathsSubject)
 LPA_TABLE_VIEWMODEL_RAC_SINGAL(reloadRowsAtIndexPathsSignal, reloadRowsAtIndexPathsSubject)
 
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(willDisplayCellSignal, willDisplayCellSubject);
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(willDisplayHeaderViewSignal, willDisplayHeaderViewSubject);
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(willDisplayFooterViewSignal, willDisplayFooterViewSubject);
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(didEndDisplayingCellSignal, didEndDisplayingCellSubject);
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(didEndDisplayingHeaderViewSignal, didEndDisplayingHeaderViewSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(didEndDisplayingFooterViewSignal, didEndDisplayingFooterViewSubject)
+
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(scrollToRowAtIndexPathSignal, scrollToRowAtIndexPathSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(scrollToNearestSelectedRowSignal, scrollToNearestSelectedRowSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(didHighlightRowAtIndexPathSignal, didHighlightRowAtIndexPathSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(didUnhighlightRowAtIndexPathSignal, didUnhighlightRowAtIndexPathSubject);
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(didSelectRowAtIndexPathSignal, didSelectRowAtIndexPathSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(didDeselectRowAtIndexPathSignal, didDeselectRowAtIndexPathSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(willSelectRowAtIndexPathSignal, willSelectRowAtIndexPathSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(willDeselectRowAtIndexPathSignal, willDeselectRowAtIndexPathSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(willBeginEditingRowAtIndexPathSignal, willBeginEditingRowAtIndexPathSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(didEndEditingRowAtIndexPathSignal, didEndEditingRowAtIndexPathSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(sectionForSectionIndexTitleSignal, sectionForSectionIndexTitleSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(moveRowAtIndexPathToIndexPathSignal, moveRowAtIndexPathToIndexPathSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(commitEditingStyleForRowAtIndexPathSignal, commitEditingStyleForRowAtIndexPathSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(editActionsForRowAtIndexPathSignal, editActionsForRowAtIndexPathSubject)
+
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(shouldShowMenuForRowAtIndexPathSignal, shouldShowMenuForRowAtIndexPathSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(canPerformActionSignal, canPerformActionSubject)
+LPA_TABLE_VIEWMODEL_RAC_SINGAL(performActionSignal, performActionSubject)
+
 #pragma mark - Custom Accessors
 
 LPA_TABLE_VIEWMODEL_RAC_SUBJECT(reloadDataSubject, @"reloadDataSignal")
-LPA_TABLE_VIEWMODEL_RAC_SUBJECT(scrollToRowAtIndexPathSubject, @"scrollToRowAtIndexPathSignal")
-LPA_TABLE_VIEWMODEL_RAC_SUBJECT(scrollToNearestSelectedRowSubject, @"scrollToNearestRowSignal")
 LPA_TABLE_VIEWMODEL_RAC_SUBJECT(insertSectionsSubject, @"insertSectionsSignal")
 LPA_TABLE_VIEWMODEL_RAC_SUBJECT(deleteSectionsSubject, @"deleteSectionSignal")
 LPA_TABLE_VIEWMODEL_RAC_SUBJECT(replaceSectionsSubject, @"replaceSectionSignal")
@@ -538,5 +812,31 @@ LPA_TABLE_VIEWMODEL_RAC_SUBJECT(insertRowsAtIndexPathsSubject, @"insertRowsAtInd
 LPA_TABLE_VIEWMODEL_RAC_SUBJECT(deleteRowsAtIndexPathsSubject, @"deleteRowsAtIndexPathsSignal")
 LPA_TABLE_VIEWMODEL_RAC_SUBJECT(replaceRowsAtIndexPathsSubject, @"replaceRowsAtIndexPathsSignal")
 LPA_TABLE_VIEWMODEL_RAC_SUBJECT(reloadRowsAtIndexPathsSubject, @"reloadRowsAtIndexPathsSignal")
+
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(willDisplayCellSubject, @"willDisplayCellSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(willDisplayHeaderViewSubject, @"willDisplayHeaderViewSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(willDisplayFooterViewSubject, @"willDisplayFooterViewSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(didEndDisplayingCellSubject, @"didEndDisplayingCellSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(didEndDisplayingHeaderViewSubject, @"didEndDisplayingHeaderViewSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(didEndDisplayingFooterViewSubject, @"didEndDisplayingFooterViewSubject")
+
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(scrollToRowAtIndexPathSubject, @"scrollToRowAtIndexPathSignal")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(scrollToNearestSelectedRowSubject, @"scrollToNearestRowSignal")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(didHighlightRowAtIndexPathSubject, @"didHighlightRowAtIndexPathSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(didUnhighlightRowAtIndexPathSubject, @"didUnhighlightRowAtIndexPathSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(didSelectRowAtIndexPathSubject, @"didSelectRowAtIndexPathSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(didDeselectRowAtIndexPathSubject, @"didDeselectRowAtIndexPathSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(willSelectRowAtIndexPathSubject, @"willSelectRowAtIndexPathSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(willDeselectRowAtIndexPathSubject, @"willDeselectRowAtIndexPathSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(willBeginEditingRowAtIndexPathSubject, @"willBeginEditingRowAtIndexPathSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(didEndEditingRowAtIndexPathSubject, @"didEndEditingRowAtIndexPathSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(sectionForSectionIndexTitleSubject, @"sectionForSectionIndexTitleSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(moveRowAtIndexPathToIndexPathSubject, @"moveRowAtIndexPathToIndexPathSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(commitEditingStyleForRowAtIndexPathSubject, @"commitEditingStyleForRowAtIndexPathSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(editActionsForRowAtIndexPathSubject, @"editActionsForRowAtIndexPathSubject")
+
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(shouldShowMenuForRowAtIndexPathSubject, @"shouldShowMenuForRowAtIndexPathSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(canPerformActionSubject, @"canPerformActionSubject")
+LPA_TABLE_VIEWMODEL_RAC_SUBJECT(performActionSubject, @"performActionSubject")
 
 @end

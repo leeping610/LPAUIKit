@@ -12,8 +12,11 @@
 #import "LPADemoWebViewController.h"
 
 #import <LPAUIKit/LPAUIKit.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 
 @interface LPADemoViewController ()
+
+@property (nonatomic, strong) RACSubject *racSubject;
 
 @end
 
@@ -39,7 +42,7 @@
 //    [self lpa_addRightBarButtonItemWithImage:[UIImage imageNamed:@"success"] handlerBlock:^(UIButton *barButton) {
 //        NSLog(@"success");
 //    }];
-    self.lpa_barItemFont = [UIFont systemFontOfSize:12];
+    self.lpa_barItemFont = [UIFont systemFontOfSize:15];
     LPABarButtonItemHandlerBlock leftBlock1 = ^(UIButton *barButton) {
         NSLog(@"左1");
     };
@@ -83,6 +86,18 @@
 //            }
 //        });
 //    });
+//    @weakify(self)
+    self.racSubject = [RACSubject subject];
+    RACSignal *signal = self.racSubject;
+    [signal subscribeNext:^(id nextObject) {
+        NSLog(@"1");
+    }];
+    [signal subscribeNext:^(id nextObject) {
+        NSLog(@"2");
+    }];
+    [signal subscribeNext:^(id nextObject) {
+        NSLog(@"3");
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -107,4 +122,17 @@
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 
+#pragma mark - RAC
+
+- (IBAction)rac1ButtonHandler:(id)sender {
+    [self.racSubject sendNext:@"A"];
+}
+
+- (IBAction)rac2ButtonHandler:(id)sender {
+    [self.racSubject sendNext:@"B"];
+}
+
+- (IBAction)rac3ButtonHandler:(id)sender {
+    [self.racSubject sendNext:@"C"];
+}
 @end

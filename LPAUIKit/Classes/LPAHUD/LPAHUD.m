@@ -9,12 +9,9 @@
 
 #import <objc/runtime.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "LPAUIKit-Macros.h"
 
 #define LPAHUDKeyWindow [UIApplication sharedApplication].keyWindow
-
-#define LPAUIKitResourcesPath [[NSBundle mainBundle] pathForResource:@"Frameworks/LPAUIKit.framework/LPAUIKit" ofType:@"bundle"]
-#define LPAUIKitResourcesBundle [NSBundle bundleWithPath:LPAUIKitResourcesPath]
-#define LPAUIKitImageResource(imageName) LPAUIKitResourcesBundle ? [UIImage imageNamed:imageName inBundle:LPAUIKitResourcesBundle compatibleWithTraitCollection:nil] : [UIImage imageNamed:imageName inBundle:[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"LPAUIKit" ofType:@"bundle"]] compatibleWithTraitCollection:nil]
 
 static const void *LPAHUDBackgroundStyleKey = &LPAHUDBackgroundStyleKey;
 static const void *LPAHUDAnimationKey = &LPAHUDAnimationKey;

@@ -32,6 +32,11 @@
     // Start request
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://www.baidu.com"]];
     [self.lpa_webView loadRequest:request];
+    
+    __weak typeof(self) weakSelf = self;
+    [self lpa_addRightBarButtonItemWithText:@"close" handlerBlock:^(UIButton *button){
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
