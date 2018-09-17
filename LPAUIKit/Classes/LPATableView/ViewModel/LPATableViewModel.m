@@ -79,7 +79,7 @@
         _tableViewDataSource = self;
         /// Add default section
         LPATableSectionViewModel *sectionViewModel = [[LPATableSectionViewModel alloc] init];
-        [_sectionList addObject:sectionViewModel];
+        [self addSectionViewModel:sectionViewModel];
     }
     return self;
 }

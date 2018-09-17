@@ -33,7 +33,12 @@
         [tableViewModel addCellViewModel:demoViewModel];
     }
     [self.tableView bindTableViewModel:tableViewModel];
-    
+    [self.tableView setLpa_pullToRefreshStyle:LPAScrollPullToRefreshStyleHeader];
+    [self.tableView lpa_didHeaderPullToRefresh:[^(LPATableView *tableView){
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.tableView lpa_endPullToRefresh];
+        });
+    } copy]];
     __weak typeof(self) weakSelf = self;
     LPABarButtonItemHandlerBlock rightBlock1 = ^(UIButton *barButton) {
         [tableViewModel removeAllSection];

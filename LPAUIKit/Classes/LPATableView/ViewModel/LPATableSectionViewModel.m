@@ -36,7 +36,7 @@
 }
 
 - (void)insertCellViewModel:(id<LPATableCellViewModelProtocol>)cellViewModel atIndex:(NSUInteger)index {
-    if (index < _mutableCellList.count - 1) {
+    if (index < _mutableCellList.count) {
         [_mutableCellList insertObject:cellViewModel atIndex:index];
     }
 }

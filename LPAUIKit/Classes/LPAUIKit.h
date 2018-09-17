@@ -14,6 +14,7 @@
 #import <LPAUIKit/NSString+LPAAttributedString.h>
 #import <LPAUIKit/UIView+LPAToastHUD.h>
 #import <LPAUIKit/UIControl+LPAEvent.h>
+#import <LPAUIKit/UIScrollView+LPAPullToRefresh.h>
 #import <LPAUIKit/UIViewController+LPAAlert.h>
 #import <LPAUIKit/UIViewController+LPANavigationBar.h>
 #import <LPAUIKit/UIViewController+LPABarButtonItem.h>
@@ -24,7 +25,6 @@
 #import <LPAUIKit/LPATableView.h>
 // LPATableViewManager
 #import <LPAUIKit/LPATableViewManager.h>
-
 // LPAHUD
 #import <LPAUIKit/LPAHUD.h>
 

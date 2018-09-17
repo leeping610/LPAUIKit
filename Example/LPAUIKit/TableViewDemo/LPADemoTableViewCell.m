@@ -46,6 +46,7 @@
 
 - (void)cellWillAppear {
     NSLog(@"%@", NSStringFromSelector(_cmd));
+    NSLog(@"%@", self.viewModel.title);
 }
 
 @end
