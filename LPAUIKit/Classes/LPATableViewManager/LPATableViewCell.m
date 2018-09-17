@@ -24,13 +24,11 @@
 
 #pragma mark - Class Methods
 
-+ (BOOL)canFocusWithItem:(LPATableViewItem *)item
-{
++ (BOOL)canFocusWithItem:(LPATableViewItem *)item {
     return NO;
 }
 
-+ (CGFloat)heightWithItem:(LPATableViewItem *)item tableViewManager:(LPATableViewManager *)tableViewManager
-{
++ (CGFloat)heightWithItem:(LPATableViewItem *)item tableViewManager:(LPATableViewManager *)tableViewManager {
     return item.cellHeight;
     
 //    if ([item isKindOfClass:[LPATableViewItem class]] && item.cellHeight > 0)
@@ -44,24 +42,20 @@
 
 #pragma mark - Life Cycle
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     self.fromXib = YES;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 }
 
-- (void)cellDidLoad
-{
+- (void)cellDidLoad {
     self.loaded = YES;
 }
 
-- (void)cellWillAppear
-{
+- (void)cellWillAppear {
 //    if ([self.item isKindOfClass:[NSString class]]) {
 //        self.textLabel.text = (NSString *)self.item;
 //        self.textLabel.backgroundColor = [UIColor clearColor];
@@ -81,15 +75,13 @@
 //
 }
 
-- (void)cellDidDisappear
-{
+- (void)cellDidDisappear {
     
 }
 
 #pragma mark - Index Methods
 
-- (NSIndexPath *)indexPathForPreviousResponderInSectionIndex:(NSUInteger)sectionIndex
-{
+- (NSIndexPath *)indexPathForPreviousResponderInSectionIndex:(NSUInteger)sectionIndex {
     LPATableViewSection *section = self.tableViewManager.sections[sectionIndex];
     NSUInteger indexInSection =  [section isEqual:self.section] ? [section.items indexOfObject:self.item] : section.items.count;
     for (NSInteger i = indexInSection - 1; i >= 0; i--) {
@@ -103,8 +95,7 @@
     return nil;
 }
 
-- (NSIndexPath *)indexPathForPreviousResponder
-{
+- (NSIndexPath *)indexPathForPreviousResponder {
     for (NSInteger i = self.sectionIndex; i >= 0; i--) {
         NSIndexPath *indexPath = [self indexPathForPreviousResponderInSectionIndex:i];
         if (indexPath)
@@ -113,8 +104,7 @@
     return nil;
 }
 
-- (NSIndexPath *)indexPathForNextResponderInSectionIndex:(NSUInteger)sectionIndex
-{
+- (NSIndexPath *)indexPathForNextResponderInSectionIndex:(NSUInteger)sectionIndex {
     LPATableViewSection *section = self.tableViewManager.sections[sectionIndex];
     NSUInteger indexInSection =  [section isEqual:self.section] ? [section.items indexOfObject:self.item] : -1;
     for (NSInteger i = indexInSection + 1; i < section.items.count; i++) {
@@ -128,8 +118,7 @@
     return nil;
 }
 
-- (NSIndexPath *)indexPathForNextResponder
-{
+- (NSIndexPath *)indexPathForNextResponder {
     for (NSInteger i = self.sectionIndex; i < self.tableViewManager.sections.count; i++) {
         NSIndexPath *indexPath = [self indexPathForNextResponderInSectionIndex:i];
         if (indexPath)

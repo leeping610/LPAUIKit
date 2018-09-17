@@ -20,8 +20,7 @@
 #pragma mark - Life Cycle
 
 - (instancetype)initWithFrame:(CGRect)frame
-                  refreshType:(LPACollectionViewRefreshType)refreshType
-{
+                  refreshType:(LPACollectionViewRefreshType)refreshType {
     self = [super initWithFrame:frame];
     if (self) {
         self.refreshType = refreshType;
@@ -32,8 +31,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
          collectionViewLayout:(UICollectionViewLayout *)layout
-                  refreshType:(LPACollectionViewRefreshType)refreshType
-{
+                  refreshType:(LPACollectionViewRefreshType)refreshType {
     self = [super initWithFrame:frame collectionViewLayout:layout];
     if (self) {
         self.refreshType = refreshType;
@@ -42,40 +40,34 @@
     return self;
 }
 
-- (void)reloadData
-{
+- (void)reloadData {
     [super reloadData];
     [self.mj_header endRefreshing];
     [self.mj_footer endRefreshing];
 }
 
-- (void)beginHeaderRefresh
-{
+- (void)beginHeaderRefresh {
     [self.mj_header beginRefreshing];
 }
 
-- (void)beginFooterRefresh
-{
+- (void)beginFooterRefresh {
     [self.mj_footer beginRefreshing];
 }
 
-- (void)endRefresh
-{
+- (void)endRefresh {
     [self.mj_header endRefreshing];
     [self.mj_footer endRefreshing];
 }
 
 #pragma mark - Event Response
 
-- (void)headerRefreshDidPullHandler
-{
+- (void)headerRefreshDidPullHandler {
     if (self.lpaDelegate && [self.lpaDelegate respondsToSelector:@selector(collectionViewDidHeaderPull:)]) {
         [self.lpaDelegate collectionViewDidHeaderPull:self];
     }
 }
 
-- (void)footerRefreshDidPullHandler
-{
+- (void)footerRefreshDidPullHandler {
     if (self.lpaDelegate && [self.lpaDelegate respondsToSelector:@selector(collectionViewDidFooterPull:)]) {
         [self.lpaDelegate collectionViewDidFooterPull:self];
     }
@@ -83,8 +75,7 @@
 
 #pragma mark - Custom Accessors
 
-- (MJRefreshNormalHeader *)refreshHeader
-{
+- (MJRefreshNormalHeader *)refreshHeader {
     if (!_refreshHeader) {
         __weak typeof(self) weakSelf = self;
         _refreshHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -95,8 +86,7 @@
     return _refreshHeader;
 }
 
-- (MJRefreshBackNormalFooter *)refreshFooter
-{
+- (MJRefreshBackNormalFooter *)refreshFooter {
     if (!_refreshFooter) {
         __weak typeof(self) weakSelf = self;
         _refreshFooter = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
@@ -106,8 +96,7 @@
     return _refreshFooter;
 }
 
-- (void)setRefreshType:(LPACollectionViewRefreshType)refreshType
-{
+- (void)setRefreshType:(LPACollectionViewRefreshType)refreshType {
     _refreshType = refreshType;
     if (_refreshType & LPACollectionViewRefreshTypeHeader) {
         self.mj_header = self.refreshHeader;

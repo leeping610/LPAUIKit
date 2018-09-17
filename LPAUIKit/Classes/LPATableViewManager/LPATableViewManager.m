@@ -23,14 +23,12 @@
 
 #pragma mark - Life Cycle
 
-- (instancetype)init
-{
+- (instancetype)init {
     @throw [NSException exceptionWithName:NSGenericException reason:@"init not supported, use initWithTableView: instead." userInfo:nil];
     return nil;
 }
 
-- (instancetype)initWithTableView:(UITableView *)tableView
-{
+- (instancetype)initWithTableView:(UITableView *)tableView {
     self = [super init];
     if (self) {
         _tableView = tableView;
@@ -47,8 +45,7 @@
     return self;
 }
 
-- (instancetype)initWithTableView:(UITableView *)tableView delegate:(id<LPATableViewManagerDelegate>)delegate
-{
+- (instancetype)initWithTableView:(UITableView *)tableView delegate:(id<LPATableViewManagerDelegate>)delegate {
     self = [self initWithTableView:tableView];
     if (self) {
         _delegate = delegate;
@@ -56,21 +53,18 @@
     return self;
 }
 
-- (void)registerDefaultClasses
-{
+- (void)registerDefaultClasses {
     self[@"LPATableViewItem"] = @"LPATableViewCell";
     self[@"__NSCFConstantString"] = @"LPATableViewCell";
     self[@"__NSCFString"] = @"LPATableViewCell";
     self[@"NSString"] = @"LPATableViewCell";
 }
 
-- (void)registerClass:(NSString *)objectClass forCellWithReuseIdentifier:(NSString *)identifier
-{
+- (void)registerClass:(NSString *)objectClass forCellWithReuseIdentifier:(NSString *)identifier {
     [self registerClass:objectClass forCellWithReuseIdentifier:identifier bundle:nil];
 }
 
-- (void)registerClass:(NSString *)objectClass forCellWithReuseIdentifier:(NSString *)identifier bundle:(NSBundle *)bundle
-{
+- (void)registerClass:(NSString *)objectClass forCellWithReuseIdentifier:(NSString *)identifier bundle:(NSBundle *)bundle {
     NSAssert(NSClassFromString(objectClass), ([NSString stringWithFormat:@"Item class '%@' does not exist.", objectClass]));
     NSAssert(NSClassFromString(identifier), ([NSString stringWithFormat:@"Cell class '%@' does not exist.", identifier]));
     _registeredClasses[(id <NSCopying>)NSClassFromString(objectClass)] = NSClassFromString(identifier);
@@ -87,25 +81,21 @@
     }
 }
 
-- (Class)classForCellAtIndexPath:(NSIndexPath *)indexPath
-{
+- (Class)classForCellAtIndexPath:(NSIndexPath *)indexPath {
     LPATableViewSection *section = _mutableSections[indexPath.section];
     NSObject *item = section.items[indexPath.row];
     return _registeredClasses[item.class];
 }
 
-- (id)objectAtKeyedSubscript:(id<NSCopying>)key
-{
+- (id)objectAtKeyedSubscript:(id<NSCopying>)key {
     return _registeredClasses[key];
 }
 
-- (void)setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key
-{
+- (void)setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key {
     [self registerClass:(NSString *)key forCellWithReuseIdentifier:obj];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     _delegate = nil;
     _tableView.delegate = nil;
     _tableView.dataSource = nil;
@@ -113,133 +103,110 @@
 
 #pragma mark - Managing sections
 
-- (void)addSection:(LPATableViewSection *)section
-{
+- (void)addSection:(LPATableViewSection *)section {
     section.tableViewManager = self;
     [_mutableSections addObject:section];
 }
 
-- (void)addSectionsFromArray:(NSArray<LPATableViewSection *> *)array
-{
+- (void)addSectionsFromArray:(NSArray<LPATableViewSection *> *)array {
     [array enumerateObjectsUsingBlock:^(LPATableViewSection *section, NSUInteger idx, BOOL *stop){
         [self addSection:section];
     }];
 }
 
-- (void)insertSection:(LPATableViewSection *)section atIndex:(NSUInteger)index
-{
+- (void)insertSection:(LPATableViewSection *)section atIndex:(NSUInteger)index {
     section.tableViewManager = self;
     [_mutableSections insertObject:section atIndex:index];
 }
 
-- (void)insertSections:(NSArray<LPATableViewSection *> *)sections atIndexes:(NSIndexSet *)indexes
-{
+- (void)insertSections:(NSArray<LPATableViewSection *> *)sections atIndexes:(NSIndexSet *)indexes {
     [sections enumerateObjectsUsingBlock:^(LPATableViewSection *section, NSUInteger idx, BOOL *stop){
         section.tableViewManager = self;
     }];
     [_mutableSections insertObjects:sections atIndexes:indexes];
 }
 
-- (void)removeSection:(LPATableViewSection *)section
-{
+- (void)removeSection:(LPATableViewSection *)section {
     [_mutableSections removeObject:section];
 }
 
-- (void)removeAllSections
-{
+- (void)removeAllSections {
     [_mutableSections removeAllObjects];
 }
 
-- (void)removeSectionIdenticalTo:(LPATableViewSection *)section inRange:(NSRange)range
-{
+- (void)removeSectionIdenticalTo:(LPATableViewSection *)section inRange:(NSRange)range {
     [_mutableSections removeObjectIdenticalTo:section inRange:range];
 }
 
-- (void)removeSectionIdenticalTo:(LPATableViewSection *)section
-{
+- (void)removeSectionIdenticalTo:(LPATableViewSection *)section {
     [_mutableSections removeObjectIdenticalTo:section];
 }
 
-- (void)removeSectionsInArray:(NSArray *)otherArray
-{
+- (void)removeSectionsInArray:(NSArray *)otherArray {
     [_mutableSections removeObjectsInArray:otherArray];
 }
 
-- (void)removeSectionsInRange:(NSRange)range
-{
+- (void)removeSectionsInRange:(NSRange)range {
     [_mutableSections removeObjectsInRange:range];
 }
 
-- (void)removeSection:(LPATableViewSection *)section inRange:(NSRange)range
-{
+- (void)removeSection:(LPATableViewSection *)section inRange:(NSRange)range {
     [_mutableSections removeObject:section inRange:range];
 }
 
-- (void)removeLastSection
-{
+- (void)removeLastSection {
     [_mutableSections removeLastObject];
 }
 
-- (void)removeSectionAtIndex:(NSUInteger)index
-{
+- (void)removeSectionAtIndex:(NSUInteger)index {
     [_mutableSections removeObjectAtIndex:index];
 }
 
-- (void)removeSectionsAtIndexes:(NSIndexSet *)indexes
-{
+- (void)removeSectionsAtIndexes:(NSIndexSet *)indexes {
     [_mutableSections removeObjectsAtIndexes:indexes];
 }
 
-- (void)replaceSectionAtIndex:(NSUInteger)index withSection:(LPATableViewSection *)section
-{
+- (void)replaceSectionAtIndex:(NSUInteger)index withSection:(LPATableViewSection *)section {
     section.tableViewManager = self;
     [_mutableSections replaceObjectAtIndex:index withObject:section];
 }
 
-- (void)replaceSectionsWithSectionsFromArray:(NSArray *)otherArray
-{
+- (void)replaceSectionsWithSectionsFromArray:(NSArray *)otherArray {
     [self removeAllSections];
     [self addSectionsFromArray:otherArray];
 }
 
-- (void)replaceSectionsAtIndexes:(NSIndexSet *)indexes withSections:(NSArray *)sections
-{
+- (void)replaceSectionsAtIndexes:(NSIndexSet *)indexes withSections:(NSArray *)sections {
     [sections enumerateObjectsUsingBlock:^(LPATableViewSection *section, NSUInteger idx, BOOL *stop){
         section.tableViewManager = self;
     }];
     [_mutableSections replaceObjectsAtIndexes:indexes withObjects:sections];
 }
 
-- (void)replaceSectionsInRange:(NSRange)range withSectionsFromArray:(NSArray *)otherArray range:(NSRange)otherRange
-{
+- (void)replaceSectionsInRange:(NSRange)range withSectionsFromArray:(NSArray *)otherArray range:(NSRange)otherRange {
     [otherArray enumerateObjectsUsingBlock:^(LPATableViewSection *section, NSUInteger idx, BOOL *stop){
         section.tableViewManager = self;
     }];
     [_mutableSections replaceObjectsInRange:range withObjectsFromArray:otherArray range:otherRange];
 }
 
-- (void)replaceSectionsInRange:(NSRange)range withSectionsFromArray:(NSArray *)otherArray
-{
+- (void)replaceSectionsInRange:(NSRange)range withSectionsFromArray:(NSArray *)otherArray {
     [_mutableSections replaceObjectsInRange:range withObjectsFromArray:otherArray];
 }
 
-- (void)exchangeSectionAtIndex:(NSUInteger)idx1 withSectionAtIndex:(NSUInteger)idx2
-{
+- (void)exchangeSectionAtIndex:(NSUInteger)idx1 withSectionAtIndex:(NSUInteger)idx2 {
     [_mutableSections exchangeObjectAtIndex:idx1 withObjectAtIndex:idx2];
 }
 
-- (void)sortSectionsUsingFunction:(NSInteger (*)(id, id, void *))compare context:(void *)context
-{
+- (void)sortSectionsUsingFunction:(NSInteger (*)(id, id, void *))compare context:(void *)context {
     [_mutableSections sortUsingFunction:compare context:context];
 }
 
-- (void)sortSectionsUsingSelector:(SEL)comparator
-{
+- (void)sortSectionsUsingSelector:(SEL)comparator {
     [_mutableSections sortUsingSelector:comparator];
 }
 
-- (NSIndexPath *)indexPathForItem:(id)item
-{
+- (NSIndexPath *)indexPathForItem:(id)item {
     for (LPATableViewSection *section in _mutableSections) {
         for (id existItem in section.items) {
             if (existItem == item) {
@@ -253,8 +220,7 @@
 
 #pragma mark - Checking for errors
 
-- (NSArray *)errors
-{
+- (NSArray *)errors {
     __block NSMutableArray *errors;
     [_mutableSections enumerateObjectsUsingBlock:^(LPATableViewSection *section, NSUInteger idx, BOOL *stop){
         NSArray *sectionErrors = section.errors;
@@ -270,21 +236,18 @@
 
 #pragma mark - UITableView DataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return _mutableSections.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (_mutableSections.count <= section) {
         return 0;
     }
     return ((LPATableViewSection *)_mutableSections[section]).items.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LPATableViewSection *section = _mutableSections[indexPath.section];
     LPATableViewItem *item = section.items[indexPath.row];
     
@@ -350,8 +313,7 @@
 
 #pragma mark - UITableView Delegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     LPATableViewSection *section = _mutableSections[indexPath.section];
     id item = section.items[indexPath.row];
     
@@ -362,8 +324,7 @@
     return height;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_mutableSections.count <= indexPath.section) {
         return UITableViewAutomaticDimension;
     }
@@ -381,8 +342,7 @@
     return height ? height : UITableViewAutomaticDimension;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex {
     if (_mutableSections.count <= sectionIndex) {
         return UITableViewAutomaticDimension;
     }
@@ -422,8 +382,7 @@
     return UITableViewAutomaticDimension;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)sectionIndex
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)sectionIndex {
     if (self.mutableSections.count <= sectionIndex) {
         return UITableViewAutomaticDimension;
     }
@@ -463,8 +422,7 @@
     return UITableViewAutomaticDimension;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex
-{
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex {
     if (_mutableSections.count <= sectionIndex) {
         return nil;
     }
@@ -478,8 +436,7 @@
     return section.headerView;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)sectionIndex
-{
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)sectionIndex {
     if (_mutableSections.count <= sectionIndex) {
         return nil;
     }
@@ -493,109 +450,93 @@
     return section.footerView;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(nonnull UITableViewCell *)cell forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView willDisplayCell:(nonnull UITableViewCell *)cell forRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
-{
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section
-{
+- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
     
 }
 
-- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
-- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section
-{
+- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
     
 }
 
-- (void)tableView:(UITableView *)tableView didEndDisplayingFooterView:(UIView *)view forSection:(NSInteger)section
-{
+- (void)tableView:(UITableView *)tableView didEndDisplayingFooterView:(UIView *)view forSection:(NSInteger)section {
     
 }
 
 #pragma mark - UIScrollView Delegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // Forward to UIScrollView delegate
     //
     if ([self.delegate conformsToProtocol:@protocol(UIScrollViewDelegate)] && [self.delegate respondsToSelector:@selector(scrollViewDidScroll:)])
         [self.delegate scrollViewDidScroll:self.tableView];
 }
 
-- (void)scrollViewDidZoom:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
     // Forward to UIScrollView delegate
     //
     if ([self.delegate conformsToProtocol:@protocol(UIScrollViewDelegate)] && [self.delegate respondsToSelector:@selector(scrollViewDidZoom:)])
         [self.delegate scrollViewDidZoom:self.tableView];
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     // Forward to UIScrollView delegate
     //
     if ([self.delegate conformsToProtocol:@protocol(UIScrollViewDelegate)] && [self.delegate respondsToSelector:@selector(scrollViewWillBeginDragging:)])
         [self.delegate scrollViewWillBeginDragging:self.tableView];
 }
 
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
-{
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
     // Forward to UIScrollView delegate
     //
     if ([self.delegate conformsToProtocol:@protocol(UIScrollViewDelegate)] && [self.delegate respondsToSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)])
         [self.delegate scrollViewWillEndDragging:self.tableView withVelocity:velocity targetContentOffset:targetContentOffset];
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     // Forward to UIScrollView delegate
     //
     if ([self.delegate conformsToProtocol:@protocol(UIScrollViewDelegate)] && [self.delegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)])
         [self.delegate scrollViewDidEndDragging:self.tableView willDecelerate:decelerate];
 }
 
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
-{
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
     // Forward to UIScrollView delegate
     //
     if ([self.delegate conformsToProtocol:@protocol(UIScrollViewDelegate)] && [self.delegate respondsToSelector:@selector(scrollViewWillBeginDecelerating:)])
         [self.delegate scrollViewWillBeginDecelerating:self.tableView];
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // Forward to UIScrollView delegate
     //
     if ([self.delegate conformsToProtocol:@protocol(UIScrollViewDelegate)] && [self.delegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)])
         [self.delegate scrollViewDidEndDecelerating:self.tableView];
 }
 
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     // Forward to UIScrollView delegate
     //
     if ([self.delegate conformsToProtocol:@protocol(UIScrollViewDelegate)] && [self.delegate respondsToSelector:@selector(scrollViewDidEndScrollingAnimation:)])
         [self.delegate scrollViewDidEndScrollingAnimation:self.tableView];
 }
 
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     // Forward to UIScrollView delegate
     //
     if ([self.delegate conformsToProtocol:@protocol(UIScrollViewDelegate)] && [self.delegate respondsToSelector:@selector(viewForZoomingInScrollView:)])
@@ -604,24 +545,21 @@
     return nil;
 }
 
-- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
-{
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view {
     // Forward to UIScrollView delegate
     //
     if ([self.delegate conformsToProtocol:@protocol(UIScrollViewDelegate)] && [self.delegate respondsToSelector:@selector(scrollViewWillBeginZooming:withView:)])
         [self.delegate scrollViewWillBeginZooming:self.tableView withView:view];
 }
 
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
-{
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
     // Forward to UIScrollView delegate
     //
     if ([self.delegate conformsToProtocol:@protocol(UIScrollViewDelegate)] && [self.delegate respondsToSelector:@selector(scrollViewDidEndZooming:withView:atScale:)])
         [self.delegate scrollViewDidEndZooming:self.tableView withView:view atScale:scale];
 }
 
-- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
-{
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
     // Forward to UIScrollView delegate
     //
     if ([self.delegate conformsToProtocol:@protocol(UIScrollViewDelegate)] && [self.delegate respondsToSelector:@selector(scrollViewShouldScrollToTop:)])
@@ -629,8 +567,7 @@
     return YES;
 }
 
-- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
     // Forward to UIScrollView delegate
     //
     if ([self.delegate conformsToProtocol:@protocol(UIScrollViewDelegate)] && [self.delegate respondsToSelector:@selector(scrollViewDidScrollToTop:)])
@@ -639,8 +576,7 @@
 
 #pragma mark - Custom Accessors
 
-- (NSArray *)sections
-{
+- (NSArray *)sections {
     return _mutableSections;
 }
 

@@ -5,13 +5,13 @@
 //  Created by 平果太郎 on 2017/10/11.
 //
 
-#import "LPAViewController.h"
+#import <UIKit/UIKit.h>
 #import "LPACollectionView.h"
 
-@interface LPACollectionViewController : LPAViewController <UICollectionViewDelegate,
-                                                            UICollectionViewDataSource,
-                                                            UICollectionViewDelegateFlowLayout,
-                                                            LPACollectionViewDelegate>
+@interface LPACollectionViewController : UIViewController <UICollectionViewDelegate,
+                                                           UICollectionViewDataSource,
+                                                           UICollectionViewDelegateFlowLayout,
+                                                           LPACollectionViewDelegate>
 
 @property (nonatomic, strong, readonly) IBOutlet LPACollectionView *collectionView;
 @property (nonatomic, assign) IBInspectable LPACollectionViewRefreshType refreshType;
