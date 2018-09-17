@@ -12,12 +12,11 @@
 #import "LPADemoWebViewController.h"
 
 #import <LPAUIKit/LPAUIKit.h>
-#import <LPAUIKit/LPATableViewController.h>
-#import <LPAUIKit/LPACollectionViewController.h>
-#import <LPAUIKit/UIView+LPAToastHUD.h>
-#import <LPAUIKit/LPAHUD.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 
 @interface LPADemoViewController ()
+
+@property (nonatomic, strong) RACSubject *racSubject;
 
 @end
 
@@ -43,7 +42,7 @@
 //    [self lpa_addRightBarButtonItemWithImage:[UIImage imageNamed:@"success"] handlerBlock:^(UIButton *barButton) {
 //        NSLog(@"success");
 //    }];
-    self.lpa_barItemFont = [UIFont systemFontOfSize:12];
+    self.lpa_barItemFont = [UIFont systemFontOfSize:15];
     LPABarButtonItemHandlerBlock leftBlock1 = ^(UIButton *barButton) {
         NSLog(@"左1");
     };
@@ -62,8 +61,43 @@
     [leftHandlerBlockList addObject:leftBlock2];
     [rightHandlerBlockList addObject:rightBlock1];
     [rightHandlerBlockList addObject:rightBlock2];
-    [self lpa_addLeftBarButtonItemWithTextList:@[@"左1", @"左2"] handlerBlockList:leftHandlerBlockList];
-    [self lpa_addRightBarButtonItemWithTextList:@[@"右1", @"右2"] handlerBlockList:rightHandlerBlockList];
+    [self lpa_addLeftBarButtonItemWithTextList:@[@"left1", @"左2"] handlerBlockList:leftHandlerBlockList];
+    [self lpa_addRightBarButtonItemWithTextList:@[@"右1", @"right2"] handlerBlockList:rightHandlerBlockList];
+    /// GCD
+//    dispatch_queue_t queue1 = dispatch_queue_create("com.leeping.gcd.queue1", DISPATCH_QUEUE_SERIAL);
+//    dispatch_queue_t queue2 = dispatch_queue_create("com.leeping.gcd.queue2", DISPATCH_QUEUE_CONCURRENT);
+//    dispatch_async(queue2, ^{
+//        dispatch_sync(queue1, ^{
+//            for (NSInteger i = 0; i < 5; i++) {
+//                [NSThread sleepForTimeInterval:0.5];
+//                NSLog(@"1-%@", [NSThread currentThread]);
+//            }
+//        });
+//        dispatch_sync(queue1, ^{
+//            for (NSInteger i = 0; i < 5; i++) {
+//                [NSThread sleepForTimeInterval:0.5];
+//                NSLog(@"2-%@", [NSThread currentThread]);
+//            }
+//        });
+//        dispatch_sync(queue1, ^{
+//            for (NSInteger i = 0; i < 5; i++) {
+//                [NSThread sleepForTimeInterval:0.5];
+//                NSLog(@"3-%@", [NSThread currentThread]);
+//            }
+//        });
+//    });
+//    @weakify(self)
+    self.racSubject = [RACSubject subject];
+    RACSignal *signal = self.racSubject;
+    [signal subscribeNext:^(id nextObject) {
+        NSLog(@"1");
+    }];
+    [signal subscribeNext:^(id nextObject) {
+        NSLog(@"2");
+    }];
+    [signal subscribeNext:^(id nextObject) {
+        NSLog(@"3");
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,4 +122,17 @@
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 
+#pragma mark - RAC
+
+- (IBAction)rac1ButtonHandler:(id)sender {
+    [self.racSubject sendNext:@"A"];
+}
+
+- (IBAction)rac2ButtonHandler:(id)sender {
+    [self.racSubject sendNext:@"B"];
+}
+
+- (IBAction)rac3ButtonHandler:(id)sender {
+    [self.racSubject sendNext:@"C"];
+}
 @end

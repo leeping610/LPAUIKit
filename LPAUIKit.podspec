@@ -44,5 +44,6 @@ TODO: Add long description of the pod here.
   s.dependency 'Masonry'
   s.dependency 'MBProgressHUD'
   s.dependency 'MJRefresh'
+  s.dependency 'ReactiveObjC'
   # s.dependency 'AMap3DMap'
 end
