@@ -469,8 +469,6 @@
     if ([cellViewModel respondsToSelector:@selector(tableViewCellAccessoryType)]) {
         tableViewCell.accessoryType = cellViewModel.tableViewCellAccessoryType;
     }
-    UITextField *textFiled = [[UITextField alloc] init];
-    textFiled.textContentType = UITextContentTypeOneTimeCode;
     return cell;
 }
 
@@ -503,7 +501,7 @@
     if (sectionNumber) {
         return sectionNumber.integerValue;
     }else {
-        [_sectionIndexTitles indexOfObject:title];
+        return [_sectionIndexTitles indexOfObject:title];
     }
 }
 
